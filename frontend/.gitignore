@@ -9,10 +9,3 @@ log/*.log
 tmp/**
 node_modules/
 .sass-cache
-.venv/
-*.m4a
-*.zip
-*.tar.gz
-data/images/*
-dist/
-.github/
