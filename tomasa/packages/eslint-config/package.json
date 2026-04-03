@@ -1,0 +1,11 @@
+{
+  "name": "@repo/eslint-config",
+  "version": "0.0.0",
+  "private": true,
+  "main": "next.js",
+  "dependencies": {
+    "@next/eslint-plugin-next": "^15.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-config-next": "^15.0.0"
+  }
+}

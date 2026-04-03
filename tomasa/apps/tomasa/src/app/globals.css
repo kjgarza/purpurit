@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+/* Include shadcn/ui components from monorepo packages */
+@source "../../../../packages/ui/src";
+
+/* Tailwind plugins — declared as CSS directives in v4 */
+@plugin "tailwindcss-animate";
+@plugin "@tailwindcss/typography";
+
+/* shadcn/ui theme variables mapped to Tailwind utilities via @theme inline */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* Custom font variables — set in layout.tsx via next/font */
+@theme inline {
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-serif: var(--font-lora), Georgia, serif;
+}
+
+/* Base theme CSS custom properties — emerald & dusty rose palette */
+:root {
+  --background: oklch(0.94 0.03 160);
+  --foreground: oklch(0.28 0.06 155);
+  --card: oklch(0.92 0.04 160);
+  --card-foreground: oklch(0.28 0.06 155);
+  --popover: oklch(0.94 0.03 160);
+  --popover-foreground: oklch(0.28 0.06 155);
+  --primary: oklch(0.45 0.12 158);
+  --primary-foreground: oklch(0.94 0.03 160);
+  --secondary: oklch(0.90 0.03 160);
+  --secondary-foreground: oklch(0.28 0.06 155);
+  --muted: oklch(0.90 0.03 160);
+  --muted-foreground: oklch(0.55 0.08 158);
+  --accent: oklch(0.72 0.18 350);
+  --accent-foreground: oklch(0.28 0.06 155);
+  --destructive: oklch(0.55 0.2 25);
+  --destructive-foreground: oklch(0.94 0.03 160);
+  --border: oklch(0.85 0.04 160);
+  --input: oklch(0.85 0.04 160);
+  --ring: oklch(0.45 0.12 158);
+  --radius: 0.5rem;
+}
+
+/* Scroll-snap utilities */
+.snap-y-mandatory {
+  scroll-snap-type: y mandatory;
+}
+.snap-start {
+  scroll-snap-align: start;
+}
+
+/* Canvas texture system — opt-in via class names */
+
+.canvas-grain {
+  position: relative;
+}
+
+.canvas-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.45' numOctaves='6' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
+  background-size: 512px 512px;
+  opacity: 0.40;
+  mix-blend-mode: multiply;
+}
+
+.canvas-grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.2' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
+  background-size: 512px 512px;
+  opacity: 0.18;
+  mix-blend-mode: soft-light;
+}
+
+.canvas-vignette {
+  position: relative;
+}
+
+.canvas-vignette::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  box-shadow: inset 0 0 160px 70px oklch(0.22 0.06 155 / 0.15);
+}
+
+.canvas-gradient {
+  position: relative;
+}
+
+.canvas-gradient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 20% 10%, oklch(0.82 0.10 162 / 0.5) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 90%, oklch(0.82 0.12 350 / 0.25) 0%, transparent 40%),
+    linear-gradient(180deg, oklch(0.90 0.05 160 / 0.3) 0%, transparent 25%, oklch(0.86 0.06 155 / 0.25) 100%);
+}

@@ -1,0 +1,37 @@
+/* tooling/theme.css — shared OKLCH design tokens */
+
+@theme {
+  /* Neutral palette — emerald/jade axis (hue 158) */
+  --color-neutral-50: oklch(0.985 0.005 158);
+  --color-neutral-100: oklch(0.97 0.008 158);
+  --color-neutral-200: oklch(0.922 0.015 158);
+  --color-neutral-300: oklch(0.87 0.025 158);
+  --color-neutral-400: oklch(0.708 0.04 158);
+  --color-neutral-500: oklch(0.553 0.05 158);
+  --color-neutral-600: oklch(0.442 0.045 158);
+  --color-neutral-700: oklch(0.371 0.04 158);
+  --color-neutral-800: oklch(0.269 0.03 158);
+  --color-neutral-900: oklch(0.205 0.025 158);
+  --color-neutral-950: oklch(0.145 0.02 158);
+
+  /* Primary accent — emerald */
+  --color-primary-400: oklch(0.62 0.14 160);
+  --color-primary-500: oklch(0.45 0.12 158);
+  --color-primary-600: oklch(0.35 0.10 155);
+
+  /* Typography */
+  --font-sans: system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Spacing scale */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 4rem;
+
+  /* Border radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+}

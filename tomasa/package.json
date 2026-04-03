@@ -1,0 +1,13 @@
+{
+  "name": "tomasa",
+  "private": true,
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "dev": "bun run --filter './apps/*' dev",
+    "build": "bun run --filter './packages/*' build && bun run --filter './apps/*' build",
+    "test": "bun test",
+    "lint": "bun run --filter '*' lint",
+    "type-check": "bun run --filter '*' type-check"
+  },
+  "packageManager": "bun@1.1.38"
+}

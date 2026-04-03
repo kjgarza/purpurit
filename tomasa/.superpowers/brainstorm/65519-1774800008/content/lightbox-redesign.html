@@ -1,0 +1,125 @@
+<h2>Lightbox redesign — which treatment?</h2>
+<p class="subtitle">The current lightbox is a flat brown overlay with a plain image. Here are 3 upgraded approaches using the emerald + dusty rose palette with canvas texture. Click to select.</p>
+
+<div class="cards">
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 0; overflow: hidden;">
+      <!-- Lightbox mockup A: Textured backdrop with gradient -->
+      <div style="position: relative; min-height: 320px; background: oklch(0.18 0.04 155); overflow: hidden; display: flex; align-items: center; justify-content: center;">
+        <!-- Canvas grain on dark backdrop -->
+        <svg style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.25; mix-blend-mode: soft-light;" xmlns="http://www.w3.org/2000/svg">
+          <filter id="lbA">
+            <feTurbulence type="fractalNoise" baseFrequency="0.5" numOctaves="5" stitchTiles="stitch"/>
+            <feColorMatrix type="saturate" values="0"/>
+          </filter>
+          <rect width="100%" height="100%" filter="url(#lbA)" fill="oklch(0.50 0.06 155)"/>
+        </svg>
+        <!-- Radial glow behind image -->
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at center, oklch(0.30 0.08 160 / 0.6) 0%, transparent 65%);"></div>
+        <!-- Vignette -->
+        <div style="position: absolute; inset: 0; box-shadow: inset 0 0 200px 80px oklch(0.10 0.03 155 / 0.5);"></div>
+        <!-- Mock image -->
+        <div style="position: relative; z-index: 1; width: 200px; height: 160px; background: linear-gradient(135deg, oklch(0.75 0.06 160), oklch(0.65 0.08 155)); border-radius: 4px; box-shadow: 0 8px 40px oklch(0.10 0.04 155 / 0.5), 0 2px 8px oklch(0.10 0.04 155 / 0.3); display: flex; align-items: center; justify-content: center;">
+          <span style="font-size: 40px; opacity: 0.4;">&#x1f5bc;</span>
+        </div>
+        <!-- Close button -->
+        <div style="position: absolute; top: 16px; right: 16px; z-index: 2; width: 36px; height: 36px; border-radius: 50%; background: oklch(0.72 0.18 350 / 0.2); border: 1.5px solid oklch(0.72 0.18 350 / 0.5); display: flex; align-items: center; justify-content: center;">
+          <span style="color: oklch(0.85 0.10 350); font-size: 18px; line-height: 1;">&times;</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A. Gallery Spotlight</h3>
+      <p>Dark emerald textured backdrop with a radial glow behind the image — like a spotlight in a museum gallery. Dusty rose close button. <strong>Focused and dramatic.</strong></p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 0; overflow: hidden;">
+      <!-- Lightbox mockup B: Frosted glass with frame -->
+      <div style="position: relative; min-height: 320px; background: oklch(0.22 0.05 158); overflow: hidden; display: flex; align-items: center; justify-content: center;">
+        <!-- Canvas grain -->
+        <svg style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.20; mix-blend-mode: soft-light;" xmlns="http://www.w3.org/2000/svg">
+          <filter id="lbB">
+            <feTurbulence type="fractalNoise" baseFrequency="0.5" numOctaves="5" stitchTiles="stitch"/>
+            <feColorMatrix type="saturate" values="0"/>
+          </filter>
+          <rect width="100%" height="100%" filter="url(#lbB)" fill="oklch(0.45 0.06 158)"/>
+        </svg>
+        <!-- Gradient backdrop -->
+        <div style="position: absolute; inset: 0; background: linear-gradient(160deg, oklch(0.20 0.06 162 / 0.8) 0%, oklch(0.16 0.04 155 / 0.9) 50%, oklch(0.18 0.05 350 / 0.3) 100%);"></div>
+        <!-- Vignette -->
+        <div style="position: absolute; inset: 0; box-shadow: inset 0 0 180px 70px oklch(0.08 0.02 155 / 0.5);"></div>
+        <!-- Framed image with mat -->
+        <div style="position: relative; z-index: 1;">
+          <!-- Outer frame -->
+          <div style="padding: 6px; background: linear-gradient(135deg, oklch(0.40 0.06 158), oklch(0.30 0.04 155)); border-radius: 3px; box-shadow: 0 12px 50px oklch(0.08 0.03 155 / 0.6), 0 2px 8px oklch(0.08 0.03 155 / 0.3);">
+            <!-- Inner mat -->
+            <div style="padding: 10px; background: oklch(0.92 0.02 160);">
+              <!-- Image -->
+              <div style="width: 180px; height: 140px; background: linear-gradient(135deg, oklch(0.75 0.06 160), oklch(0.65 0.08 155)); display: flex; align-items: center; justify-content: center;">
+                <span style="font-size: 40px; opacity: 0.4;">&#x1f5bc;</span>
+              </div>
+            </div>
+          </div>
+          <!-- Caption below frame -->
+          <p style="text-align: center; font-family: 'Lora', Georgia, serif; font-size: 12px; color: oklch(0.70 0.06 160); margin: 10px 0 0; font-style: italic;">Tomasa en el jardin, 1958</p>
+        </div>
+        <!-- Close button -->
+        <div style="position: absolute; top: 16px; right: 16px; z-index: 2; width: 36px; height: 36px; border-radius: 50%; background: oklch(0.72 0.18 350 / 0.15); border: 1.5px solid oklch(0.72 0.18 350 / 0.4); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center;">
+          <span style="color: oklch(0.82 0.12 350); font-size: 18px; line-height: 1;">&times;</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B. Museum Frame</h3>
+      <p>Dark emerald gradient backdrop with the image presented in a gallery frame (outer frame + cream mat). Caption below. <strong>Like viewing art on a museum wall.</strong></p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 0; overflow: hidden;">
+      <!-- Lightbox mockup C: Immersive with decorative borders -->
+      <div style="position: relative; min-height: 320px; background: oklch(0.15 0.05 155); overflow: hidden; display: flex; align-items: center; justify-content: center;">
+        <!-- Heavy canvas grain -->
+        <svg style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.35; mix-blend-mode: soft-light;" xmlns="http://www.w3.org/2000/svg">
+          <filter id="lbC">
+            <feTurbulence type="fractalNoise" baseFrequency="0.4" numOctaves="6" stitchTiles="stitch"/>
+            <feColorMatrix type="saturate" values="0"/>
+          </filter>
+          <rect width="100%" height="100%" filter="url(#lbC)" fill="oklch(0.40 0.08 155)"/>
+        </svg>
+        <!-- Rich gradient with rose accent -->
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at center, oklch(0.25 0.08 160 / 0.5) 0%, transparent 55%), radial-gradient(ellipse at 80% 20%, oklch(0.30 0.10 350 / 0.15) 0%, transparent 40%);"></div>
+        <!-- Strong vignette -->
+        <div style="position: absolute; inset: 0; box-shadow: inset 0 0 200px 100px oklch(0.06 0.02 155 / 0.6);"></div>
+        <!-- Decorative corner brackets -->
+        <div style="position: absolute; top: 20px; left: 20px; width: 40px; height: 40px; border-top: 2px solid oklch(0.72 0.18 350 / 0.35); border-left: 2px solid oklch(0.72 0.18 350 / 0.35);"></div>
+        <div style="position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; border-top: 2px solid oklch(0.72 0.18 350 / 0.35); border-right: 2px solid oklch(0.72 0.18 350 / 0.35);"></div>
+        <div style="position: absolute; bottom: 20px; left: 20px; width: 40px; height: 40px; border-bottom: 2px solid oklch(0.72 0.18 350 / 0.35); border-left: 2px solid oklch(0.72 0.18 350 / 0.35);"></div>
+        <div style="position: absolute; bottom: 20px; right: 20px; width: 40px; height: 40px; border-bottom: 2px solid oklch(0.72 0.18 350 / 0.35); border-right: 2px solid oklch(0.72 0.18 350 / 0.35);"></div>
+        <!-- Image with soft glow -->
+        <div style="position: relative; z-index: 1; text-align: center;">
+          <div style="display: inline-block; width: 200px; height: 160px; background: linear-gradient(135deg, oklch(0.75 0.06 160), oklch(0.65 0.08 155)); border-radius: 3px; box-shadow: 0 0 60px 15px oklch(0.72 0.18 350 / 0.08), 0 12px 50px oklch(0.08 0.03 155 / 0.5); display: flex; align-items: center; justify-content: center;">
+            <span style="font-size: 40px; opacity: 0.4;">&#x1f5bc;</span>
+          </div>
+          <!-- Ornamental divider below -->
+          <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 14px auto; width: 180px;">
+            <div style="flex: 1; height: 1px; background: linear-gradient(90deg, transparent, oklch(0.72 0.18 350 / 0.5));"></div>
+            <div style="width: 6px; height: 6px; border: 1px solid oklch(0.72 0.18 350 / 0.5); transform: rotate(45deg);"></div>
+            <div style="flex: 1; height: 1px; background: linear-gradient(270deg, transparent, oklch(0.72 0.18 350 / 0.5));"></div>
+          </div>
+          <p style="font-family: 'Lora', Georgia, serif; font-size: 12px; color: oklch(0.65 0.08 160); font-style: italic; margin: 0;">Tomasa en el jardin, 1958</p>
+        </div>
+        <!-- Close button -->
+        <div style="position: absolute; top: 16px; right: 16px; z-index: 2; width: 36px; height: 36px; border-radius: 50%; background: oklch(0.72 0.18 350 / 0.12); border: 1.5px solid oklch(0.72 0.18 350 / 0.4); display: flex; align-items: center; justify-content: center;">
+          <span style="color: oklch(0.82 0.12 350); font-size: 18px; line-height: 1;">&times;</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C. Immersive Exhibition</h3>
+      <p>Heavy canvas texture, rose corner brackets framing the viewport, subtle rose glow around image, ornamental diamond divider with caption. <strong>The full gallery experience.</strong></p>
+    </div>
+  </div>
+</div>

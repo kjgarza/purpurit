@@ -1,0 +1,88 @@
+timeline:
+  1930s:
+    - title: "1933"
+      description: "Nació el segundo hermano, Evaristo Corral Casas."
+      date: "1933-01-01"
+    - title: "Nacimiento"
+      description: "Nació Tomasa Corral Casas."
+      transcript: "Tomasa Corral Casas nació el 20 de diciembre de 1934 en el rancho Los Solices, municipio de Bocoyna, Chihuahua."
+      date: "1935-12-31"
+    - title: "1936 (Age 1)"
+      description: "Land reforms and nationalization of the oil industry."
+      date: "1936-01-01"
+    - title: "1939 (Age 4)"
+      description: "Mexico's involvement in the war, leading to economic changes and industrial growth."
+      date: "1939-01-01"
+  1940s:
+    episodes:
+      - title: "1941 (Age 6)"
+        description: "The United States enters WWII after the attack on Pearl Harbor."
+        date: "1941-01-01"
+      - title: "1945 (Age 10)"
+        description: "World War II ends. She is 10 years old, likely aware of the effects of the war on daily life."
+        date: "1945-01-01"
+      - title: "1948"
+        description: "La familia se mudó del rancho Los Solices al pueblo minero El Oro, Chihuahua."
+        date: "1948-01-01"
+  1950s:
+    episodes:
+      - title: "1950"
+        description: "Tomasa se fue a trabajar a la Ciudad de Chihuahua."
+        date: "1950-01-01"
+      - title: "1956"
+        description: "Tomasa Se casó por primera vez."
+        date: "1956-01-01"
+      - title: "20 de abril de 1958"
+        description: "Nació su primer hijo, Miguel Ángel Ochoa Corral."
+        date: "1958-04-20"
+      - title: "Mayo de 1958"
+        description: "Tomasa Enviudó."
+        date: "1958-05-01"
+      - title: "1960"
+        description: "Tomasa Se volvió a casar."
+        date: "1960-01-01"
+  1960s:
+    episodes:
+      - title: "1961"
+        description: "La cancion Popotitos es la mas popular."
+        date: "1961-01-01"
+      - title: "6 de agosto de 1961"
+        description: "Nació su segunda hija, María Teresa Gutiérrez Corral."
+        date: "1961-08-06"
+      - title: "1 de diciembre de 1962"
+        description: "Nació su tercer hijo, Marco Antonio Gutiérrez Corral."
+        date: "1962-12-01"
+      - title: "12 de junio de 1965"
+        description: "Nació su cuarto hijo, Arnulfo Gutiérrez Corral."
+        date: "1965-06-12"
+      - title: "1965"
+        description: "Se mudaron al Aserradero Estación Bahuichivo."
+        date: "1965-01-01"
+      - title: "4 de mayo de 1967"
+        description: "Nació su quinto hijo, Jesús Armando Gutiérrez Corral."
+        date: "1967-05-04"
+  1970s:
+    episodes:
+      - title: "1973"
+        description: "Se regresaron a vivir a Chihuahua."
+        date: "1973-01-01"
+  1980s:
+    episodes:
+      - title: "1980s"
+        description: "Nació su primera nieta, Erika Ochoa Calvillo."
+        date: "1980-01-01"
+  2000s:
+    episodes:
+      - title: "1 de julio de 2006"
+        description: "Nació su primera bisnieta, Andrea Ochoa."
+        date: "2006-07-01"
+  2010s:
+    episodes:
+      - title: "2020"
+        description: "Pandemia de Covid."
+        date: "2020-01-01"
+  2020s:
+    episodes:
+      - title: "2021"
+        description: "Abuelo Tono fallece."
+        date: "2021-01-01"

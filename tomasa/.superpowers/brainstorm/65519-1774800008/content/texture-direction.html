@@ -1,0 +1,96 @@
+<h2>How much texture and gradient depth?</h2>
+<p class="subtitle">Each option shows a narrative slide mockup with the emerald green palette + dusty rose accents. Click to select.</p>
+
+<div class="cards">
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 0; overflow: hidden;">
+      <div style="position: relative; min-height: 280px; background: oklch(0.94 0.03 160); overflow: hidden;">
+        <!-- Very subtle radial gradient only -->
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 40%, oklch(0.88 0.05 158 / 0.3) 100%);"></div>
+        <!-- Content -->
+        <div style="position: relative; z-index: 1; padding: 32px; max-width: 360px; margin: 0 auto; text-align: center;">
+          <p style="font-family: 'Lora', Georgia, serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: oklch(0.55 0.10 158); margin: 0 0 12px;">Los anos 40</p>
+          <p style="font-family: 'Lora', Georgia, serif; font-size: 20px; line-height: 1.6; color: oklch(0.28 0.06 155); margin: 0 0 20px;">En aquellos tiempos, la casa siempre olia a cafe recien hecho y a flores del jardin.</p>
+          <!-- Dusty rose divider -->
+          <div style="height: 1.5px; background: linear-gradient(90deg, transparent, oklch(0.72 0.18 350), transparent); margin: 16px auto; width: 60%;"></div>
+          <p style="font-family: 'Lora', Georgia, serif; font-size: 14px; color: oklch(0.50 0.08 158); margin: 0; font-style: italic;">— Recuerdos de la familia</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A. Restrained Enhancement</h3>
+      <p>Subtle radial gradient vignette on backgrounds. No visible grain. Clean and modern with gentle depth. <strong>Barely-there elegance.</strong></p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 0; overflow: hidden;">
+      <div style="position: relative; min-height: 280px; background: oklch(0.94 0.03 160); overflow: hidden;">
+        <!-- Paper texture via SVG noise -->
+        <svg style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.06; mix-blend-mode: multiply;" xmlns="http://www.w3.org/2000/svg">
+          <filter id="paperB">
+            <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="5" stitchTiles="stitch"/>
+            <feColorMatrix type="saturate" values="0"/>
+          </filter>
+          <rect width="100%" height="100%" filter="url(#paperB)" fill="oklch(0.50 0.08 155)"/>
+        </svg>
+        <!-- Layered gradient -->
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 20%, oklch(0.92 0.05 162 / 0.4) 0%, transparent 60%), radial-gradient(ellipse at 70% 80%, oklch(0.90 0.04 350 / 0.15) 0%, transparent 50%);"></div>
+        <!-- Soft vignette -->
+        <div style="position: absolute; inset: 0; box-shadow: inset 0 0 120px 40px oklch(0.30 0.06 155 / 0.08);"></div>
+        <!-- Content -->
+        <div style="position: relative; z-index: 1; padding: 32px; max-width: 360px; margin: 0 auto; text-align: center;">
+          <p style="font-family: 'Lora', Georgia, serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: oklch(0.55 0.10 158); margin: 0 0 12px;">Los anos 40</p>
+          <p style="font-family: 'Lora', Georgia, serif; font-size: 20px; line-height: 1.6; color: oklch(0.28 0.06 155); margin: 0 0 20px;">En aquellos tiempos, la casa siempre olia a cafe recien hecho y a flores del jardin.</p>
+          <!-- Dusty rose divider -->
+          <div style="height: 1.5px; background: linear-gradient(90deg, transparent, oklch(0.72 0.18 350), transparent); margin: 16px auto; width: 60%;"></div>
+          <p style="font-family: 'Lora', Georgia, serif; font-size: 14px; color: oklch(0.50 0.08 158); margin: 0; font-style: italic;">— Recuerdos de la familia</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B. Layered & Tactile</h3>
+      <p>Visible paper grain across slides. Layered radial gradients with a hint of dusty rose warmth bleeding in. Soft vignette edges. <strong>Aged watercolor paper feel.</strong></p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 0; overflow: hidden;">
+      <div style="position: relative; min-height: 280px; background: oklch(0.94 0.03 160); overflow: hidden;">
+        <!-- Heavier paper texture -->
+        <svg style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.10; mix-blend-mode: multiply;" xmlns="http://www.w3.org/2000/svg">
+          <filter id="paperC">
+            <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="6" stitchTiles="stitch"/>
+            <feColorMatrix type="saturate" values="0"/>
+          </filter>
+          <rect width="100%" height="100%" filter="url(#paperC)" fill="oklch(0.45 0.10 155)"/>
+        </svg>
+        <!-- Rich multi-stop gradient -->
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 10%, oklch(0.85 0.08 162 / 0.5) 0%, transparent 50%), radial-gradient(ellipse at 80% 90%, oklch(0.85 0.10 350 / 0.2) 0%, transparent 45%), linear-gradient(180deg, oklch(0.92 0.04 160 / 0.3) 0%, transparent 30%, oklch(0.88 0.05 155 / 0.2) 100%);"></div>
+        <!-- Strong vignette -->
+        <div style="position: absolute; inset: 0; box-shadow: inset 0 0 150px 60px oklch(0.25 0.06 155 / 0.12);"></div>
+        <!-- Content -->
+        <div style="position: relative; z-index: 1; padding: 32px; max-width: 360px; margin: 0 auto; text-align: center;">
+          <p style="font-family: 'Lora', Georgia, serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: oklch(0.55 0.10 158); margin: 0 0 12px;">Los anos 40</p>
+          <p style="font-family: 'Lora', Georgia, serif; font-size: 20px; line-height: 1.6; color: oklch(0.28 0.06 155); margin: 0 0 20px;">En aquellos tiempos, la casa siempre olia a cafe recien hecho y a flores del jardin.</p>
+          <!-- Ornamental divider -->
+          <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 16px auto; width: 70%;">
+            <div style="flex: 1; height: 1.5px; background: linear-gradient(90deg, transparent, oklch(0.72 0.18 350));"></div>
+            <div style="width: 8px; height: 8px; border: 1.5px solid oklch(0.72 0.18 350); transform: rotate(45deg);"></div>
+            <div style="flex: 1; height: 1.5px; background: linear-gradient(270deg, transparent, oklch(0.72 0.18 350));"></div>
+          </div>
+          <p style="font-family: 'Lora', Georgia, serif; font-size: 14px; color: oklch(0.50 0.08 158); margin: 0; font-style: italic;">— Recuerdos de la familia</p>
+        </div>
+        <!-- Decorative corner elements -->
+        <div style="position: absolute; top: 12px; left: 12px; width: 24px; height: 24px; border-top: 2px solid oklch(0.62 0.14 160 / 0.3); border-left: 2px solid oklch(0.62 0.14 160 / 0.3);"></div>
+        <div style="position: absolute; top: 12px; right: 12px; width: 24px; height: 24px; border-top: 2px solid oklch(0.62 0.14 160 / 0.3); border-right: 2px solid oklch(0.62 0.14 160 / 0.3);"></div>
+        <div style="position: absolute; bottom: 12px; left: 12px; width: 24px; height: 24px; border-bottom: 2px solid oklch(0.62 0.14 160 / 0.3); border-left: 2px solid oklch(0.62 0.14 160 / 0.3);"></div>
+        <div style="position: absolute; bottom: 12px; right: 12px; width: 24px; height: 24px; border-bottom: 2px solid oklch(0.62 0.14 160 / 0.3); border-right: 2px solid oklch(0.62 0.14 160 / 0.3);"></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C. Rich & Decorative</h3>
+      <p>Heavy paper grain, bold layered gradients, decorative corner brackets, ornamental diamond divider. <strong>Mexican folk art expressiveness.</strong></p>
+    </div>
+  </div>
+</div>

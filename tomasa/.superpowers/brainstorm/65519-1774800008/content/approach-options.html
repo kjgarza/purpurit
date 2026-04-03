@@ -1,0 +1,62 @@
+<h2>How should we structure the full overhaul?</h2>
+<p class="subtitle">All 3 approaches deliver the same visual result — same emerald palette, dusty rose accents, canvas textures, museum frame lightbox. The difference is <strong>how the CSS is organized</strong>.</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Token-First (Recommended)</h3>
+      <p>Rewrite the design tokens in <code>tooling/theme.css</code> and <code>globals.css</code> to the new emerald/rose palette. Then update individual components to use canvas textures, gradients, and ornamental elements. The token layer does most of the work — components inherit the new colors automatically.</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul>
+          <li>Smallest diff — tokens cascade everywhere</li>
+          <li>Easy to tweak colors later (one place)</li>
+          <li>shadcn/ui components update automatically</li>
+        </ul></div>
+        <div class="cons"><h4>Cons</h4><ul>
+          <li>Components with hardcoded colors need manual fixes</li>
+          <li>Texture/gradient layers are component-level additions</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Component-Centric</h3>
+      <p>Keep current tokens mostly intact. Override colors, textures, and gradients directly in each component file (slides, lightbox, entrance, timeline). Each component owns its visual treatment completely.</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul>
+          <li>Full control per component</li>
+          <li>Can customize each slide type differently</li>
+          <li>No risk of unexpected cascade</li>
+        </ul></div>
+        <div class="cons"><h4>Cons</h4><ul>
+          <li>Larger diff — duplicate color values everywhere</li>
+          <li>Harder to maintain consistency</li>
+          <li>Color changes require editing many files</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Hybrid Layers</h3>
+      <p>Rewrite design tokens for the base palette (approach A), then add shared CSS utility classes in <code>globals.css</code> for canvas textures, vignettes, and ornamental elements. Components compose these utilities via Tailwind classes.</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul>
+          <li>Tokens handle color, utilities handle texture</li>
+          <li>Reusable texture classes across slide types</li>
+          <li>Clean separation of concerns</li>
+        </ul></div>
+        <div class="cons"><h4>Cons</h4><ul>
+          <li>Slightly more CSS to maintain</li>
+          <li>Need to decide which effects are shared vs. unique</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</div>

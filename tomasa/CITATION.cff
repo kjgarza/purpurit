@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+title: "Tomasa"
+message: "If you use this project, please cite it using the metadata from this file."
+type: software
+authors:
+  - given-names: Kristian
+    family-names: Garza
+    orcid: "https://orcid.org/0000-0003-3484-6875"
+license: CC-BY-NC-ND-4.0
