@@ -7,12 +7,14 @@ import { mediaPath } from "@/lib/base-path"
 
 interface EntranceProps {
   onEnter: () => void
+  onInteract?: () => void
 }
 
-export function Entrance({ onEnter }: EntranceProps) {
+export function Entrance({ onEnter, onInteract }: EntranceProps) {
   const [visible, setVisible] = useState(true)
 
   function handleTap() {
+    onInteract?.()
     setVisible(false)
   }
 

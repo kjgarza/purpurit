@@ -10,6 +10,7 @@ export function PhotoSlide({ slide }: { slide: Slide }) {
           src={mediaPath(slide.imageSrc)}
           alt={slide.imageAlt ?? ""}
           fill
+          sizes="100vw"
           className="object-cover object-top"
         />
       )}

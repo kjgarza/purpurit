@@ -47,9 +47,11 @@ export function SlideEngine({ decades }: SlideEngineProps) {
   }, [])
 
   const scrollToDecade = useCallback((decadeId: string) => {
-    const el = document.getElementById(decadeId)
+    const container = scrollRef.current
+    if (!container) return
+    const el = container.querySelector<HTMLElement>(`[data-decade-cover="${decadeId}"]`)
     if (el) {
-      el.scrollIntoView({ behavior: "smooth" })
+      container.scrollTo({ top: el.offsetTop, behavior: "smooth" })
     }
   }, [])
 
@@ -58,13 +60,16 @@ export function SlideEngine({ decades }: SlideEngineProps) {
     const container = scrollRef.current
     if (!container) return
 
-    const sectionEls = decades.map((d) => document.getElementById(d.id)).filter(Boolean) as HTMLElement[]
+    const coverEls = decades
+      .map((d) => container.querySelector<HTMLElement>(`[data-decade-cover="${d.id}"]`))
+      .filter(Boolean) as HTMLElement[]
 
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
-            setActiveDecadeId(entry.target.id)
+            const id = (entry.target as HTMLElement).dataset.decadeCover
+            if (id) setActiveDecadeId(id)
           }
         }
       },
@@ -74,7 +79,7 @@ export function SlideEngine({ decades }: SlideEngineProps) {
       },
     )
 
-    for (const el of sectionEls) {
+    for (const el of coverEls) {
       observer.observe(el)
     }
 
@@ -119,18 +124,18 @@ export function SlideEngine({ decades }: SlideEngineProps) {
         ref={scrollRef}
         className="snap-y-mandatory h-dvh overflow-y-auto"
       >
-        {decades.map((decade) => (
+        {decades.map((decade, index) => (
           <section
             key={decade.id}
             id={decade.id}
             role="region"
             aria-label={decade.label}
           >
-            <div className="snap-start min-h-dvh">
-              <DecadeTitleSlide decade={decade} />
+            <div className="snap-start min-h-dvh slide-offscreen" data-decade-cover={decade.id}>
+              <DecadeTitleSlide decade={decade} priority={index === 0} />
             </div>
             {decade.slides.map((slide) => (
-              <div key={slide.id} className="snap-start min-h-dvh">
+              <div key={slide.id} className="snap-start min-h-dvh slide-offscreen">
                 <SlideByType
                   slide={slide}
                   onOpenLightbox={handleOpenLightbox}

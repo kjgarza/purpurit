@@ -72,6 +72,12 @@
   scroll-snap-align: start;
 }
 
+/* Skip rendering/painting offscreen slides — degrades gracefully on older browsers */
+.slide-offscreen {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 100dvh;
+}
+
 /* Canvas texture system — opt-in via class names */
 
 .canvas-grain {

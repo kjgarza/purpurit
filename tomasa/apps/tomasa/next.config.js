@@ -8,7 +8,8 @@ const withPWA = require("next-pwa")({
   skipWaiting: true,
   runtimeCaching: [
     { urlPattern: /^https:\/\/fonts/, handler: "StaleWhileRevalidate", options: { cacheName: "google-fonts", expiration: { maxEntries: 10, maxAgeSeconds: 604800 } } },
-    { urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp)$/, handler: "CacheFirst", options: { cacheName: "images", expiration: { maxEntries: 64, maxAgeSeconds: 86400 } } },
+    { urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp)$/, handler: "CacheFirst", options: { cacheName: "images", expiration: { maxEntries: 100, maxAgeSeconds: 2592000 } } },
+    { urlPattern: /\.(?:mp3|ogg|wav)$/, handler: "CacheFirst", options: { cacheName: "audio", expiration: { maxEntries: 20, maxAgeSeconds: 2592000 } } },
     { urlPattern: /\/api\//, handler: "NetworkFirst", options: { cacheName: "api", networkTimeoutSeconds: 10 } }
   ]
 })

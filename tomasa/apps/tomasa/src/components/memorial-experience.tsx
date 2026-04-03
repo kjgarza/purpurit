@@ -8,8 +8,13 @@ import { SlideEngine } from "@/components/slide-engine"
 import { AudioToggle } from "@/components/audio-toggle"
 
 function MemorialInner({ decades }: { decades: Decade[] }) {
+  const [preloading, setPreloading] = useState(false)
   const [entered, setEntered] = useState(false)
   const { setUserHasInteracted } = useAudioContext()
+
+  function handleInteract() {
+    setPreloading(true)
+  }
 
   function handleEnter() {
     setUserHasInteracted(true)
@@ -18,8 +23,8 @@ function MemorialInner({ decades }: { decades: Decade[] }) {
 
   return (
     <>
-      {!entered && <Entrance onEnter={handleEnter} />}
-      <SlideEngine decades={decades} />
+      {!entered && <Entrance onEnter={handleEnter} onInteract={handleInteract} />}
+      {preloading && <SlideEngine decades={decades} />}
       {entered && <AudioToggle />}
     </>
   )
