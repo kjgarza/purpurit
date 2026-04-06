@@ -6,8 +6,10 @@
     "dev": "bun run --filter './apps/*' dev",
     "build": "bun run --filter './packages/*' build && bun run --filter './apps/*' build",
     "test": "bun test",
+    "test:content": "bun run --filter '*' type-check",
     "lint": "bun run --filter '*' lint",
-    "type-check": "bun run --filter '*' type-check"
+    "type-check": "bun run --filter '*' type-check",
+    "validate": "bun scripts/validate-content.ts"
   },
   "packageManager": "bun@1.1.38"
 }
