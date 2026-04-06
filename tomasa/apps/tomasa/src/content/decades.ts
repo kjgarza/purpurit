@@ -23,6 +23,14 @@ export const decades: Decade[] = [
         caption: "Recuerdos de la infancia",
       },
       {
+        id: "1930s-audio-1",
+        type: "audio",
+        title: "Felices sin tener nada",
+        text: "\"Nosotros en el rancho, si era frío, si era calor, lo que fuera. Nosotros andábamos descalzos, sin suéter. Pero fíjate que éramos tan felices, que no sentíamos nada.\"",
+        audioSrc: "1930s/rancho.mp3",
+        attribution: "Tomasa, entrevista domingo 17:04",
+      },
+      {
         id: "1930s-3",
         type: "narrative",
         title: "El rancho El Oro",
@@ -312,6 +320,14 @@ export const decades: Decade[] = [
         title: "Los nietos y el cariño",
         text: "Y luego los nietos también me cuidan. Todos me quieren. Aquí me la paso muy bien con los niños. Los niños van a la escuela pero cuando vienen — ellos aquí se la pasan muy bien.",
         attribution: "Tomasa, entrevistas domingo 17:04 y miércoles 17:57",
+      },
+      {
+        id: "1970s-audio-1",
+        type: "audio",
+        title: "El hombre en la luna",
+        text: "\"Cuando llegó el hombre a la luna, lo vimos en Guichivo. Lo vimos en una tele chiquita, como a doscientos metros de donde estábamos. Y los niños todos querían ir a ver eso.\"",
+        audioSrc: "1970s/luna.mp3",
+        attribution: "Tomasa, entrevista domingo 17:04",
       },
       {
         id: "1970s-4",
@@ -622,6 +638,14 @@ export const decades: Decade[] = [
         title: "Estoy bien",
         text: "Pero no me caí, nada, nada. Yo estoy bien. ¿Tú cómo estás? Pues qué bueno, mi hijo, mientras tengas trabajo. Trabaje y trabaje, ¿no?",
         attribution: "Tomasa, entrevista domingo 17:04",
+      },
+      {
+        id: "2010s-audio-1",
+        type: "audio",
+        title: "Ahí la llevo",
+        text: "\"Me están dando terapia en el brazo, porque no lo muevo muy bien. Pero sí puedo hacer cosas con la mano izquierda, sí. Ahí la llevo. Pero yo estoy bien.\"",
+        audioSrc: "2010s/brazo.mp3",
+        attribution: "Tomasa, entrevista miércoles 17:57",
       },
       {
         id: "2010s-4",
