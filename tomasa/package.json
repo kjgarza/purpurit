@@ -11,5 +11,8 @@
     "type-check": "bun run --filter '*' type-check",
     "validate": "bun scripts/validate-content.ts"
   },
-  "packageManager": "bun@1.1.38"
+  "packageManager": "bun@1.1.38",
+  "devDependencies": {
+    "openai": "^6.33.0"
+  }
 }

@@ -11,8 +11,10 @@ node_modules/
 .sass-cache
 .venv/
 *.m4a
-*.mp3
 *.wav
+# Exclude raw audio but allow processed media assets in public/
+*.mp3
+!tomasa/apps/tomasa/public/media/**/*.mp3
 *.zip
 *.tar.gz
 data/images/*
