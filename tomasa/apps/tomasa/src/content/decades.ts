@@ -11,8 +11,9 @@ export const decades: Decade[] = [
       {
         id: "1930s-1",
         type: "narrative",
-        title: "El comienzo",
-        text: "En un pequeño pueblo de México, nació una niña que cambiaría la vida de todos los que la conocieron. Tomasa llegó al mundo en una mañana de primavera, rodeada del aroma de tierra mojada y flores silvestres.",
+        title: "La vida en el rancho",
+        text: "Nosotros en el rancho, hiciera frío, hiciera calor, lo que fuera. Nosotros andamos descalzos sin suéter. Pero fíjate que éramos tan felices, que no sentíamos nada.",
+        attribution: "Tomasa, entrevista domingo 17:04",
       },
       {
         id: "1930s-2",
@@ -24,8 +25,9 @@ export const decades: Decade[] = [
       {
         id: "1930s-3",
         type: "narrative",
-        title: "La casa de adobe",
-        text: "La casa donde creció tenía paredes de adobe y un patio lleno de macetas. Su mamá le enseñó a regar las plantas antes de que saliera el sol. Ahí aprendió que las cosas más hermosas requieren paciencia y cuidado.",
+        title: "El rancho El Oro",
+        text: "A los Ulices yo volví cuando tenía como cinco años, porque mi papá se fue al rancho. Tenía unas tierras y animales. No había escuelas, veníamos muy cerrados del rancho. Era todo muy pacífico, muy tranquilo.",
+        attribution: "Tomasa, entrevista domingo 17:04",
       },
       {
         id: "1930s-4",
@@ -74,8 +76,9 @@ export const decades: Decade[] = [
       {
         id: "1940s-1",
         type: "narrative",
-        title: "Juventud y esperanza",
-        text: "Los años cuarenta trajeron cambios. Tomasa dejó la escuela para ayudar en casa, pero nunca dejó de aprender. Leía todo lo que encontraba y guardaba cuadernos llenos de recetas y remedios que le enseñaba su abuela.",
+        title: "A trabajar desde los quince",
+        text: "Yo me vine a Chihuahua. Aquí se vino Evaristo primero, con mi papá, que lo pusieron en el centro de salud, porque mi papá como perdió un ojo. Y me puse a trabajar aquí, cuidando niños. Como veníamos del rancho, muy cerrados, sin escuelas.",
+        attribution: "Tomasa, entrevista domingo 17:04",
       },
       {
         id: "1940s-2",
@@ -87,10 +90,10 @@ export const decades: Decade[] = [
       {
         id: "1940s-3",
         type: "audio",
-        title: "La voz de la memoria",
-        text: "\"Mi abuela decía que cocinar es como rezar: hay que poner el corazón en cada paso.\"",
+        title: "Aprendiendo a cocinar",
+        text: "\"Yo trabajé nomás en casas de los ricos, en cocina, y aprendí a hacer comida. Porque antes no sabíamos nada. En el rancho, a veces mi papá llevaba una sandía — era lo que comíamos un día o dos.\"",
         audioSrc: "1940s/recuerdo.mp3",
-        attribution: "Tomasa, recordando a su abuela materna",
+        attribution: "Tomasa, entrevistas domingo 17:04 y domingo 22:08",
       },
       {
         id: "1940s-4",
@@ -139,8 +142,9 @@ export const decades: Decade[] = [
       {
         id: "1950s-1",
         type: "narrative",
-        title: "El amor llegó caminando",
-        text: "Lo conoció en la fiesta del pueblo. Él le pidió un baile y ella le dijo que no. Al segundo baile, le dijo que sí. Así empezó una historia de amor que duraría toda la vida.",
+        title: "El novio de Parral",
+        text: "Yo me junté con mi novio en Parral. Él era de Durango y se fue a trabajar allá. Yo tenía como 23 años cuando tuve a mi hijo. Y después se murió el papá de mi hijo — le dieron un balazo en el espinazo y se murió.",
+        attribution: "Tomasa, entrevista domingo 17:04",
       },
       {
         id: "1950s-2",
@@ -159,16 +163,17 @@ export const decades: Decade[] = [
       {
         id: "1950s-4",
         type: "audio",
-        title: "Canción de cuna",
-        text: "\"Duérmete mi niño, duérmete mi sol, duérmete pedazo de mi corazón...\"",
+        title: "La familia crece",
+        text: "\"Luego tuve a mi hijo, luego tuve a otro. Todos nos fuimos a la sierra. Allí empezaron a crecer todos mis muchachitos. No había escuela, no había nada — había una escuela radiofónica, por radio.\"",
         audioSrc: "1950s/cancion-cuna.mp3",
-        attribution: "La canción que Tomasa les cantaba a todos sus hijos",
+        attribution: "Tomasa, entrevista domingo 17:04",
       },
       {
         id: "1950s-5",
         type: "narrative",
-        title: "Un hogar nuevo",
-        text: "Con mucho esfuerzo, Tomasa y su esposo construyeron su propia casa. Cada ladrillo representaba un sueño compartido. La cocina fue lo primero que terminaron, porque Tomasa decía que un hogar sin cocina no es hogar.",
+        title: "Seguir adelante",
+        text: "Entonces ya duró en la cama y ya se murió. Y ya me fui con mi cuñada, porque ya no tenía mamá. Me fui con mi cuñada para que me cuidara mi hijo, para yo poder trabajar. Y ya después de allí me vine a Chihuahua.",
+        attribution: "Tomasa, entrevista domingo 17:04",
       },
       {
         id: "1950s-6",
@@ -224,8 +229,9 @@ export const decades: Decade[] = [
       {
         id: "1960s-1",
         type: "narrative",
-        title: "La mesa siempre llena",
-        text: "Para los años sesenta, la familia había crecido. Seis hijos llenaban la casa de risas, travesuras y hambre. Tomasa cocinaba ollas enormes de frijoles, arroz y guisados que alcanzaban para todos — y siempre sobraba para el vecino.",
+        title: "La sierra y la madera",
+        text: "Le dieron trabajo a mi señor en una fábrica de madera. Allí empezaron a crecer todos mis muchachitos. Subíamos como cuarenta escalones a donde estaba la casa de madera. Ahí vivimos algún tiempo.",
+        attribution: "Tomasa, entrevista domingo 17:04",
       },
       {
         id: "1960s-2",
@@ -237,10 +243,10 @@ export const decades: Decade[] = [
       {
         id: "1960s-3",
         type: "audio",
-        title: "Sabiduría de cocina",
-        text: "\"El secreto del mole no está en los ingredientes, está en la paciencia. Hay que mover y mover sin parar, como la vida misma.\"",
+        title: "Las enchiladas de Parral",
+        text: "\"Yo me ayudaba. Molíamos chile. Así es cuando hacíamos las tortillas. Hacíamos enchiladas muy buenas. Había gente que compraba. Quién sabe ahora cómo chata.\"",
         audioSrc: "1960s/mole.mp3",
-        attribution: "Tomasa, explicando su receta familiar",
+        attribution: "Tomasa, entrevista domingo 17:04",
       },
       {
         id: "1960s-4",
@@ -289,8 +295,9 @@ export const decades: Decade[] = [
       {
         id: "1970s-1",
         type: "narrative",
-        title: "Raíces y alas",
-        text: "Los hijos empezaron a irse. Uno a la ciudad, otra al norte. Tomasa los despedía con bolsas llenas de comida y los ojos llenos de lágrimas que nunca dejaba ver. Les repetía siempre: \"Llévense sus raíces adonde vayan.\"",
+        title: "El hombre en la luna",
+        text: "Cuando llegó el hombre a la luna, lo vimos. Estábamos en Buchiniva. Lo vimos en una tele chiquita, como a doscientos metros de donde estábamos. Yo ya tenía mis años. Y los niños todos querían ir a ver eso.",
+        attribution: "Tomasa, entrevista domingo 17:04",
       },
       {
         id: "1970s-2",
@@ -302,8 +309,9 @@ export const decades: Decade[] = [
       {
         id: "1970s-3",
         type: "narrative",
-        title: "Abuela por primera vez",
-        text: "Cuando nació el primer nieto, Tomasa dijo que entendió por fin lo que significaba el amor sin condiciones. Desde ese día, su delantal siempre tenía dulces escondidos en los bolsillos.",
+        title: "Los nietos y el cariño",
+        text: "Y luego los nietos también me cuidan. Todos me quieren. Aquí me la paso muy bien con los niños. Los niños van a la escuela pero cuando vienen — ellos aquí se la pasan muy bien.",
+        attribution: "Tomasa, entrevistas domingo 17:04 y miércoles 17:57",
       },
       {
         id: "1970s-4",
@@ -359,8 +367,9 @@ export const decades: Decade[] = [
       {
         id: "1980s-1",
         type: "narrative",
-        title: "La abuela de todos",
-        text: "En los ochenta, la casa de Tomasa se convirtió en el centro del universo familiar. Cada domingo, cada cumpleaños, cada Navidad — todo pasaba en su cocina. Los nietos corrían por el patio mientras ella preparaba tamales.",
+        title: "Jugando con los nietos",
+        text: "Antes tenía uno que jugar con ellos más. Antes tenía uno que entenderles más. ¿Usted qué hacía? Pues jugábamos con un juguete que traía. ¿Usted jugaba con ellos? Sí — antes pues tenía uno que entenderles lo más.",
+        attribution: "Tomasa, entrevista miércoles 17:57",
       },
       {
         id: "1980s-2",
@@ -379,16 +388,17 @@ export const decades: Decade[] = [
       {
         id: "1980s-4",
         type: "audio",
-        title: "Consejo eterno",
-        text: "\"Mijo, en esta vida lo único que te llevas es lo que diste. Así que da mucho — da comida, da cariño, da tu tiempo.\"",
+        title: "La felicidad sin tener nada",
+        text: "\"No teníamos miedo, no. Era todo muy pacífico, muy tranquilo. Y fíjate que éramos tan felices. Vamos felices de todos modos, mi hijo.\"",
         audioSrc: "1980s/consejo.mp3",
-        attribution: "Tomasa, hablando con sus nietos",
+        attribution: "Tomasa, entrevista domingo 17:04",
       },
       {
         id: "1980s-5",
         type: "narrative",
-        title: "Lo que permanece",
-        text: "Tomasa nunca buscó ser recordada. Simplemente vivió con el corazón abierto, las manos siempre ocupadas y la puerta siempre abierta. Su legado no está en monumentos sino en cada plato que cocinamos con su receta, en cada abrazo que damos sin razón.",
+        title: "La Navidad antes",
+        text: "Antes no le conocíamos la Navidad. Este cuando yo estaba muy grande ya. Y por ejemplo, ¿cómo estabas? ¿Les dabas regalos? Sí. ¿Cómo se sintió cuando ya les daban regalos? Pues muy bien.",
+        attribution: "Tomasa, entrevista domingo 17:04",
       },
       {
         id: "1980s-6",
@@ -444,8 +454,9 @@ export const decades: Decade[] = [
       {
         id: "1990s-1",
         type: "narrative",
-        title: "Sabiduría tranquila",
-        text: "Los noventa encontraron a Tomasa más serena pero igual de fuerte. Su casa seguía siendo el punto de reunión, el lugar donde todos regresaban. Los nietos ya traían a sus propias parejas a conocer a la abuela.",
+        title: "Los hijos que se van",
+        text: "No me sentía muy bien cuando se fue. Si no sabía para dónde se había ido hasta que no le habló a mi guía, que trabajaba en una farmacia. Y le dijo que estaba en Monterrey.",
+        attribution: "Tomasa, entrevista domingo 17:04",
       },
       {
         id: "1990s-2",
@@ -464,8 +475,9 @@ export const decades: Decade[] = [
       {
         id: "1990s-4",
         type: "narrative",
-        title: "El jardín de la abuela",
-        text: "Su jardín se convirtió en su orgullo. Rosas, jazmines y hierbas medicinales crecían bajo su cuidado. Decía que las plantas son como los hijos: cada una necesita algo diferente, pero todas necesitan amor.",
+        title: "Las flores y los dibujos",
+        text: "Aquí tengo los pinos. Ahí las mariposas volando y los patos en el lago — pues me las imagino. Las flores en el jardín, pues yo las flores me gustan mucho.",
+        attribution: "Tomasa, noviembre 2024",
       },
       {
         id: "1990s-5",
@@ -514,8 +526,9 @@ export const decades: Decade[] = [
       {
         id: "2000s-1",
         type: "narrative",
-        title: "Un nuevo siglo",
-        text: "El mundo cambió, pero Tomasa seguía igual. Su cocina no tenía microondas ni necesitaba uno. Sus recetas no estaban en internet sino en su memoria. Los bisnietos la miraban con asombro, como quien descubre un tesoro antiguo.",
+        title: "Pensar y hacer",
+        text: "Estaba pensando en él. Yo creo que todos los días pienso, porque tengo esas cosas que hago cuando no tengo nada que hacer. Me pongo a dibujar — unos claveles, margaritas, pinos.",
+        attribution: "Tomasa, noviembre 2024",
       },
       {
         id: "2000s-2",
@@ -541,8 +554,9 @@ export const decades: Decade[] = [
       {
         id: "2000s-5",
         type: "narrative",
-        title: "Cuatro generaciones",
-        text: "Tomasa vivió para ver cuatro generaciones de su familia. En las fotos familiares, ella siempre estaba en el centro, pequeña pero imponente, con esa sonrisa que iluminaba cualquier cuarto.",
+        title: "Las criaturas que cuidan",
+        text: "Las criaturas, todos los nietos. Y luego los nietos también me cuidan. Todos me quieren. Sí, y todos me quieren, todos me cuidan.",
+        attribution: "Tomasa, entrevista domingo 17:04",
       },
       {
         id: "2000s-6",
@@ -591,8 +605,9 @@ export const decades: Decade[] = [
       {
         id: "2010s-1",
         type: "narrative",
-        title: "La luz que no se apaga",
-        text: "En sus últimos años, Tomasa seguía levantándose temprano, preparando café y esperando a que alguien tocara la puerta. Su memoria ya no era la misma, pero nunca olvidó una receta ni el nombre de un nieto.",
+        title: "Ahí la llevo",
+        text: "De un brazo, de los riñones, de la presión, y luego me están dando terapia en el brazo. Porque no lo muevo muy bien. Ahí la llevo, ahí la llevo. Pero estoy bien.",
+        attribution: "Tomasa, entrevista miércoles 17:57",
       },
       {
         id: "2010s-2",
@@ -604,8 +619,9 @@ export const decades: Decade[] = [
       {
         id: "2010s-3",
         type: "narrative",
-        title: "Siempre presente",
-        text: "Tomasa nos enseñó que el amor se demuestra con hechos pequeños: un plato de comida, una manta cuando hace frío, un abrazo sin preguntar por qué. Su presencia llenaba cualquier espacio, y su ausencia dejó un vacío que sólo se llena recordándola.",
+        title: "Estoy bien",
+        text: "Pero no me caí, nada, nada. Yo estoy bien. ¿Tú cómo estás? Pues qué bueno, mi hijo, mientras tengas trabajo. Trabaje y trabaje, ¿no?",
+        attribution: "Tomasa, entrevista domingo 17:04",
       },
       {
         id: "2010s-4",
