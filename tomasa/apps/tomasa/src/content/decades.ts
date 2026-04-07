@@ -475,6 +475,14 @@ export const decades: Decade[] = [
         attribution: "Tomasa, entrevista domingo 17:04",
       },
       {
+        id: "1990s-audio-1",
+        type: "audio",
+        title: "No sabía para dónde se había ido",
+        text: "\"Yo me sentí muy mal, pues. No sabía para dónde se había ido, hasta que no le habló a Miguel, que trabajaba en una farmacia. Y le dijo que se había ido a Monterrey.\"",
+        audioSrc: "1990s/monterrey.mp3",
+        attribution: "Tomasa, entrevista domingo 17:04",
+      },
+      {
         id: "1990s-2",
         type: "photo",
         imageSrc: "1990s/photo1.webp",
@@ -545,6 +553,14 @@ export const decades: Decade[] = [
         title: "Pensar y hacer",
         text: "Estaba pensando en él. Yo creo que todos los días pienso, porque tengo esas cosas que hago cuando no tengo nada que hacer. Me pongo a dibujar — unos claveles, margaritas, pinos.",
         attribution: "Tomasa, noviembre 2024",
+      },
+      {
+        id: "2000s-audio-1",
+        type: "audio",
+        title: "Aquí los crié a todos",
+        text: "\"Me sentí contenta, porque aquí vivían conmigo. Aquí los crié a todos los nietos. Y luego los nietos también los cuidé.\"",
+        audioSrc: "2000s/nietos.mp3",
+        attribution: "Tomasa, entrevista domingo 17:04",
       },
       {
         id: "2000s-2",
