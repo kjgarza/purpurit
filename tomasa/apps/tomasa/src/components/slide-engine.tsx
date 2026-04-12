@@ -55,6 +55,36 @@ export function SlideEngine({ decades }: SlideEngineProps) {
     }
   }, [])
 
+  // IntersectionObserver — trigger slide entrance animations
+  useEffect(() => {
+    const container = scrollRef.current
+    if (!container) return
+
+    const slides = Array.from(container.querySelectorAll<HTMLElement>(".slide-offscreen"))
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            ;(entry.target as HTMLElement).dataset.slideVisible = "1"
+          }
+        }
+      },
+      { root: container, threshold: 0.25 },
+    )
+
+    for (const el of slides) {
+      // Mark first slide visible immediately (it's already in view)
+      if (slides.indexOf(el) === 0) {
+        el.dataset.slideVisible = "1"
+      } else {
+        observer.observe(el)
+      }
+    }
+
+    return () => observer.disconnect()
+  }, [decades])
+
   // IntersectionObserver to track active decade
   useEffect(() => {
     const container = scrollRef.current

@@ -38,6 +38,7 @@
 @theme inline {
   --font-sans: var(--font-inter), system-ui, sans-serif;
   --font-serif: var(--font-lora), Georgia, serif;
+  --font-display: var(--font-playfair), Georgia, serif;
 }
 
 /* Base theme CSS custom properties — emerald & dusty rose palette */
@@ -92,7 +93,7 @@
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.45' numOctaves='6' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
   background-size: 512px 512px;
-  opacity: 0.40;
+  opacity: 0.08;
   mix-blend-mode: multiply;
 }
 
@@ -135,4 +136,91 @@
     radial-gradient(ellipse at 20% 10%, oklch(0.82 0.10 162 / 0.5) 0%, transparent 50%),
     radial-gradient(ellipse at 80% 90%, oklch(0.82 0.12 350 / 0.25) 0%, transparent 40%),
     linear-gradient(180deg, oklch(0.90 0.05 160 / 0.3) 0%, transparent 25%, oklch(0.86 0.06 155 / 0.25) 100%);
+}
+
+/* Editorial slide label — small caps context label */
+.slide-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-variant: small-caps;
+  font-weight: 400;
+}
+
+/* ─── Slide entrance animations ─────────────────────────── */
+
+@keyframes slide-up-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Default: invisible until parent marks slide visible */
+.slide-animate,
+.slide-animate-d1,
+.slide-animate-d2,
+.slide-animate-d3,
+.slide-animate-fade,
+.slide-scrim {
+  opacity: 0;
+}
+
+[data-slide-visible] .slide-animate {
+  animation: slide-up-fade-in 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+[data-slide-visible] .slide-animate-d1 {
+  animation: slide-up-fade-in 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+}
+
+[data-slide-visible] .slide-animate-d2 {
+  animation: slide-up-fade-in 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+[data-slide-visible] .slide-animate-d3 {
+  animation: slide-up-fade-in 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards;
+}
+
+[data-slide-visible] .slide-animate-fade {
+  animation: fade-in 1s ease 0.1s forwards;
+}
+
+/* Scrim overlay entrance */
+@keyframes scrim-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+[data-slide-visible] .slide-scrim {
+  animation: scrim-in 1.2s ease forwards;
+}
+
+/* Shaped image entrance — scale up + fade */
+@keyframes shape-entrance {
+  from {
+    opacity: 0;
+    transform: scale(0.88) translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.slide-animate-shape {
+  opacity: 0;
+}
+
+[data-slide-visible] .slide-animate-shape {
+  animation: shape-entrance 1s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
 }

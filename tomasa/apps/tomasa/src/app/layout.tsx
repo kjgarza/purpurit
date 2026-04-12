@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Inter, Lora } from "next/font/google"
+import { Inter, Lora, Playfair_Display } from "next/font/google"
 import "./globals.css"
 
 const inter = Inter({
@@ -10,6 +10,12 @@ const inter = Inter({
 const lora = Lora({
   subsets: ["latin"],
   variable: "--font-lora",
+})
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["700", "900"],
+  variable: "--font-playfair",
 })
 
 const repoName = process.env.NEXT_PUBLIC_REPO_NAME
@@ -55,7 +61,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" suppressHydrationWarning>
-      <body className={`${inter.variable} ${lora.variable} font-sans`}>
+      <body className={`${inter.variable} ${lora.variable} ${playfair.variable} font-sans`}>
         {children}
       </body>
     </html>

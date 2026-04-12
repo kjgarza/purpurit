@@ -14,6 +14,8 @@ export const decades: Decade[] = [
         title: "La vida en el rancho",
         text: "Nosotros en el rancho, hiciera frío, hiciera calor, lo que fuera. Nosotros andamos descalzos sin suéter. Pero fíjate que éramos tan felices, que no sentíamos nada.",
         attribution: "Tomasa, entrevista domingo 17:04",
+        imageSrc: "1930s/drawing-01.webp",
+        imageAlt: "Dibujo de la infancia de Tomasa",
       },
       {
         id: "1930s-2",
@@ -29,6 +31,8 @@ export const decades: Decade[] = [
         text: "\"Nosotros en el rancho, si era frío, si era calor, lo que fuera. Nosotros andábamos descalzos, sin suéter. Pero fíjate que éramos tan felices, que no sentíamos nada.\"",
         audioSrc: "1930s/rancho.mp3",
         attribution: "Tomasa, entrevista domingo 17:04",
+        imageSrc: "1930s/drawing-03.webp",
+        imageAlt: "Dibujo de la vida rural",
       },
       {
         id: "1930s-3",
@@ -36,6 +40,8 @@ export const decades: Decade[] = [
         title: "El rancho El Oro",
         text: "A los Ulices yo volví cuando tenía como cinco años, porque mi papá se fue al rancho. Tenía unas tierras y animales. No había escuelas, veníamos muy cerrados del rancho. Era todo muy pacífico, muy tranquilo.",
         attribution: "Tomasa, entrevista domingo 17:04",
+        imageSrc: "1930s/drawing-02.webp",
+        imageAlt: "Dibujo del pueblo natal",
       },
       {
         id: "1930s-4",
@@ -87,6 +93,8 @@ export const decades: Decade[] = [
         title: "A trabajar desde los quince",
         text: "Yo me vine a Chihuahua. Aquí se vino Evaristo primero, con mi papá, que lo pusieron en el centro de salud, porque mi papá como perdió un ojo. Y me puse a trabajar aquí, cuidando niños. Como veníamos del rancho, muy cerrados, sin escuelas.",
         attribution: "Tomasa, entrevista domingo 17:04",
+        imageSrc: "1940s/drawing-07.webp",
+        imageAlt: "Dibujo de la juventud de Tomasa",
       },
       {
         id: "1940s-2",
@@ -102,6 +110,8 @@ export const decades: Decade[] = [
         text: "\"Yo trabajé nomás en casas de los ricos, en cocina, y aprendí a hacer comida. Porque antes no sabíamos nada. En el rancho, a veces mi papá llevaba una sandía — era lo que comíamos un día o dos.\"",
         audioSrc: "1940s/recuerdo.mp3",
         attribution: "Tomasa, entrevistas domingo 17:04 y domingo 22:08",
+        imageSrc: "1940s/drawing-08.webp",
+        imageAlt: "Dibujo de la vida cotidiana",
       },
       {
         id: "1940s-4",
@@ -153,6 +163,8 @@ export const decades: Decade[] = [
         title: "El novio de Parral",
         text: "Yo me junté con mi novio en Parral. Él era de Durango y se fue a trabajar allá. Yo tenía como 23 años cuando tuve a mi hijo. Y después se murió el papá de mi hijo — le dieron un balazo en el espinazo y se murió.",
         attribution: "Tomasa, entrevista domingo 17:04",
+        imageSrc: "1950s/drawing-13.webp",
+        imageAlt: "Dibujo de la boda",
       },
       {
         id: "1950s-2",
@@ -175,6 +187,8 @@ export const decades: Decade[] = [
         text: "\"Luego tuve a mi hijo, luego tuve a otro. Todos nos fuimos a la sierra. Allí empezaron a crecer todos mis muchachitos. No había escuela, no había nada — había una escuela radiofónica, por radio.\"",
         audioSrc: "1950s/cancion-cuna.mp3",
         attribution: "Tomasa, entrevista domingo 17:04",
+        imageSrc: "1950s/drawing-15.webp",
+        imageAlt: "Dibujo de los primeros años de familia",
       },
       {
         id: "1950s-5",
@@ -182,6 +196,8 @@ export const decades: Decade[] = [
         title: "Seguir adelante",
         text: "Entonces ya duró en la cama y ya se murió. Y ya me fui con mi cuñada, porque ya no tenía mamá. Me fui con mi cuñada para que me cuidara mi hijo, para yo poder trabajar. Y ya después de allí me vine a Chihuahua.",
         attribution: "Tomasa, entrevista domingo 17:04",
+        imageSrc: "1950s/drawing-14.webp",
+        imageAlt: "Dibujo del hogar",
       },
       {
         id: "1950s-6",
@@ -240,6 +256,8 @@ export const decades: Decade[] = [
         title: "La sierra y la madera",
         text: "Le dieron trabajo a mi señor en una fábrica de madera. Allí empezaron a crecer todos mis muchachitos. Subíamos como cuarenta escalones a donde estaba la casa de madera. Ahí vivimos algún tiempo.",
         attribution: "Tomasa, entrevista domingo 17:04",
+        imageSrc: "1960s/drawing-19.webp",
+        imageAlt: "Dibujo de la familia numerosa",
       },
       {
         id: "1960s-2",
@@ -255,6 +273,8 @@ export const decades: Decade[] = [
         text: "\"Yo me ayudaba. Molíamos chile. Así es cuando hacíamos las tortillas. Hacíamos enchiladas muy buenas. Había gente que compraba. Quién sabe ahora cómo chata.\"",
         audioSrc: "1960s/mole.mp3",
         attribution: "Tomasa, entrevista domingo 17:04",
+        imageSrc: "1960s/drawing-20.webp",
+        imageAlt: "Dibujo de la cocina familiar",
       },
       {
         id: "1960s-4",
@@ -306,6 +326,8 @@ export const decades: Decade[] = [
         title: "El hombre en la luna",
         text: "Cuando llegó el hombre a la luna, lo vimos. Estábamos en Buchiniva. Lo vimos en una tele chiquita, como a doscientos metros de donde estábamos. Yo ya tenía mis años. Y los niños todos querían ir a ver eso.",
         attribution: "Tomasa, entrevista domingo 17:04",
+        imageSrc: "1970s/drawing-25.webp",
+        imageAlt: "Dibujo de la despedida",
       },
       {
         id: "1970s-2",
@@ -320,6 +342,8 @@ export const decades: Decade[] = [
         title: "Los nietos y el cariño",
         text: "Y luego los nietos también me cuidan. Todos me quieren. Aquí me la paso muy bien con los niños. Los niños van a la escuela pero cuando vienen — ellos aquí se la pasan muy bien.",
         attribution: "Tomasa, entrevistas domingo 17:04 y miércoles 17:57",
+        imageSrc: "1970s/drawing-26.webp",
+        imageAlt: "Dibujo de los primeros nietos",
       },
       {
         id: "1970s-audio-1",
@@ -328,6 +352,8 @@ export const decades: Decade[] = [
         text: "\"Cuando llegó el hombre a la luna, lo vimos en Guichivo. Lo vimos en una tele chiquita, como a doscientos metros de donde estábamos. Y los niños todos querían ir a ver eso.\"",
         audioSrc: "1970s/luna.mp3",
         attribution: "Tomasa, entrevista domingo 17:04",
+        imageSrc: "1970s/drawing-27.webp",
+        imageAlt: "Dibujo de raíces",
       },
       {
         id: "1970s-4",
@@ -386,6 +412,8 @@ export const decades: Decade[] = [
         title: "Jugando con los nietos",
         text: "Antes tenía uno que jugar con ellos más. Antes tenía uno que entenderles más. ¿Usted qué hacía? Pues jugábamos con un juguete que traía. ¿Usted jugaba con ellos? Sí — antes pues tenía uno que entenderles lo más.",
         attribution: "Tomasa, entrevista miércoles 17:57",
+        imageSrc: "1980s/drawing-31.webp",
+        imageAlt: "Dibujo de la Navidad",
       },
       {
         id: "1980s-2",
@@ -408,6 +436,8 @@ export const decades: Decade[] = [
         text: "\"No teníamos miedo, no. Era todo muy pacífico, muy tranquilo. Y fíjate que éramos tan felices. Vamos felices de todos modos, mi hijo.\"",
         audioSrc: "1980s/consejo.mp3",
         attribution: "Tomasa, entrevista domingo 17:04",
+        imageSrc: "1980s/drawing-33.webp",
+        imageAlt: "Dibujo del patio de la abuela",
       },
       {
         id: "1980s-5",
@@ -415,6 +445,8 @@ export const decades: Decade[] = [
         title: "La Navidad antes",
         text: "Antes no le conocíamos la Navidad. Este cuando yo estaba muy grande ya. Y por ejemplo, ¿cómo estabas? ¿Les dabas regalos? Sí. ¿Cómo se sintió cuando ya les daban regalos? Pues muy bien.",
         attribution: "Tomasa, entrevista domingo 17:04",
+        imageSrc: "1980s/drawing-32.webp",
+        imageAlt: "Dibujo de los tamales",
       },
       {
         id: "1980s-6",
@@ -473,6 +505,8 @@ export const decades: Decade[] = [
         title: "Los hijos que se van",
         text: "No me sentía muy bien cuando se fue. Si no sabía para dónde se había ido hasta que no le habló a mi guía, que trabajaba en una farmacia. Y le dijo que estaba en Monterrey.",
         attribution: "Tomasa, entrevista domingo 17:04",
+        imageSrc: "1990s/drawing-37.webp",
+        imageAlt: "Dibujo del jardín",
       },
       {
         id: "1990s-audio-1",
@@ -481,6 +515,8 @@ export const decades: Decade[] = [
         text: "\"Yo me sentí muy mal, pues. No sabía para dónde se había ido, hasta que no le habló a Miguel, que trabajaba en una farmacia. Y le dijo que se había ido a Monterrey.\"",
         audioSrc: "1990s/monterrey.mp3",
         attribution: "Tomasa, entrevista domingo 17:04",
+        imageSrc: "1990s/drawing-39.webp",
+        imageAlt: "Dibujo de reuniones familiares",
       },
       {
         id: "1990s-2",
@@ -502,6 +538,8 @@ export const decades: Decade[] = [
         title: "Las flores y los dibujos",
         text: "Aquí tengo los pinos. Ahí las mariposas volando y los patos en el lago — pues me las imagino. Las flores en el jardín, pues yo las flores me gustan mucho.",
         attribution: "Tomasa, noviembre 2024",
+        imageSrc: "1990s/drawing-38.webp",
+        imageAlt: "Dibujo de sabiduría",
       },
       {
         id: "1990s-5",
@@ -553,6 +591,8 @@ export const decades: Decade[] = [
         title: "Pensar y hacer",
         text: "Estaba pensando en él. Yo creo que todos los días pienso, porque tengo esas cosas que hago cuando no tengo nada que hacer. Me pongo a dibujar — unos claveles, margaritas, pinos.",
         attribution: "Tomasa, noviembre 2024",
+        imageSrc: "2000s/drawing-42.webp",
+        imageAlt: "Dibujo del nuevo siglo",
       },
       {
         id: "2000s-audio-1",
@@ -561,6 +601,8 @@ export const decades: Decade[] = [
         text: "\"Me sentí contenta, porque aquí vivían conmigo. Aquí los crié a todos los nietos. Y luego los nietos también los cuidé.\"",
         audioSrc: "2000s/nietos.mp3",
         attribution: "Tomasa, entrevista domingo 17:04",
+        imageSrc: "2000s/drawing-44.webp",
+        imageAlt: "Dibujo de la cocina eterna",
       },
       {
         id: "2000s-2",
@@ -589,6 +631,8 @@ export const decades: Decade[] = [
         title: "Las criaturas que cuidan",
         text: "Las criaturas, todos los nietos. Y luego los nietos también me cuidan. Todos me quieren. Sí, y todos me quieren, todos me cuidan.",
         attribution: "Tomasa, entrevista domingo 17:04",
+        imageSrc: "2000s/drawing-43.webp",
+        imageAlt: "Dibujo de generaciones",
       },
       {
         id: "2000s-6",
@@ -640,6 +684,8 @@ export const decades: Decade[] = [
         title: "Ahí la llevo",
         text: "De un brazo, de los riñones, de la presión, y luego me están dando terapia en el brazo. Porque no lo muevo muy bien. Ahí la llevo, ahí la llevo. Pero estoy bien.",
         attribution: "Tomasa, entrevista miércoles 17:57",
+        imageSrc: "2010s/drawing-47.webp",
+        imageAlt: "Dibujo de los últimos años",
       },
       {
         id: "2010s-2",
@@ -654,6 +700,8 @@ export const decades: Decade[] = [
         title: "Estoy bien",
         text: "Pero no me caí, nada, nada. Yo estoy bien. ¿Tú cómo estás? Pues qué bueno, mi hijo, mientras tengas trabajo. Trabaje y trabaje, ¿no?",
         attribution: "Tomasa, entrevista domingo 17:04",
+        imageSrc: "2010s/drawing-48.webp",
+        imageAlt: "Dibujo de recuerdos",
       },
       {
         id: "2010s-audio-1",
@@ -662,6 +710,8 @@ export const decades: Decade[] = [
         text: "\"Me están dando terapia en el brazo, porque no lo muevo muy bien. Pero sí puedo hacer cosas con la mano izquierda, sí. Ahí la llevo. Pero yo estoy bien.\"",
         audioSrc: "2010s/brazo.mp3",
         attribution: "Tomasa, entrevista miércoles 17:57",
+        imageSrc: "2010s/drawing-49.webp",
+        imageAlt: "Dibujo del legado",
       },
       {
         id: "2010s-4",

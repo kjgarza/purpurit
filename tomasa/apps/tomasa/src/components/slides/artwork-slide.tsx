@@ -24,7 +24,7 @@ export function ArtworkSlide({
         }}
       />
 
-      <div className="relative z-10 flex flex-col items-center px-6 py-10 md:py-16 max-w-4xl mx-auto">
+      <div className="relative z-10 flex flex-col items-center px-6 py-10 md:py-16 max-w-4xl md:pl-20 mx-auto">
         {slide.imageSrc && (
           <button
             type="button"
