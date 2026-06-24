@@ -35,6 +35,21 @@ const FILES = [
     path: join(DATA_DIR, "Tommy Wednesday-5-57", "Tommy - Wednesday at 17-57.m4a"),
     cache: join(CACHE_DIR, "wednesday-17-57.json"),
   },
+  {
+    id: "tomasa-nov20-0805",
+    path: join(DATA_DIR, "tomasa-Nov-20-at-08-05", "Copy of Nov 20 at 08-05.m4a"),
+    cache: join(CACHE_DIR, "tomasa-nov20-0805.json"),
+  },
+  {
+    id: "tomasa-nov20-1312",
+    path: join(DATA_DIR, "tomasa-Nov-20-at-13-12", "Nov 20 at 13-12.m4a"),
+    cache: join(CACHE_DIR, "tomasa-nov20-1312.json"),
+  },
+  {
+    id: "tomasa-nov20-1336",
+    path: join(DATA_DIR, "tomasa-Nov-20-at-13-36", "Nov 20 at 13-36.m4a"),
+    cache: join(CACHE_DIR, "tomasa-nov20-1336.json"),
+  },
 ]
 
 for (const file of FILES) {
