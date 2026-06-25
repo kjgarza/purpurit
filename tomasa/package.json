@@ -13,6 +13,7 @@
   },
   "packageManager": "bun@1.1.38",
   "devDependencies": {
+    "@anthropic-ai/sdk": "^0.106.0",
     "openai": "^6.33.0"
   }
 }
