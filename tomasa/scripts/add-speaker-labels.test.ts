@@ -1,5 +1,5 @@
 import { describe, it, expect } from "bun:test"
-import { chunkSegments, deduplicateOverlap, mergeLabels } from "./add-speaker-labels"
+import { chunkSegments, deduplicateOverlap, mergeLabels, type Speaker } from "./add-speaker-labels"
 
 const seg = (id: number, text = `seg ${id}`) => ({ id, text })
 
@@ -49,16 +49,16 @@ describe("deduplicateOverlap", () => {
     // For chunk0 of size 60, distanceFromEdge = min(55, 4) = 4
     // For chunk1 of size 30, distanceFromEdge = min(5, 24) = 5
     // chunk1 wins (higher distance from edge)
-    const chunkResults: Array<{ chunkStart: number; chunkSize: number; labels: Map<number, string> }> = [
+    const chunkResults: Array<{ chunkStart: number; chunkSize: number; labels: Map<number, Speaker> }> = [
       {
         chunkStart: 0,
         chunkSize: 60,
-        labels: new Map(Array.from({ length: 60 }, (_, i) => [i, "Tomasa"])),
+        labels: new Map<number, Speaker>(Array.from({ length: 60 }, (_, i) => [i, "Tomasa" as Speaker])),
       },
       {
         chunkStart: 50,
         chunkSize: 30,
-        labels: new Map(Array.from({ length: 30 }, (_, i) => [50 + i, "Interviewer"])),
+        labels: new Map<number, Speaker>(Array.from({ length: 30 }, (_, i) => [50 + i, "Interviewer" as Speaker])),
       },
     ]
 
@@ -77,7 +77,7 @@ describe("deduplicateOverlap", () => {
       {
         chunkStart: 0,
         chunkSize: 5,
-        labels: new Map<number, string>([[0, "Tomasa"], [1, "Interviewer"], [2, "Tomasa"]]),
+        labels: new Map<number, Speaker>([[0, "Tomasa" as Speaker], [1, "Interviewer" as Speaker], [2, "Tomasa" as Speaker]]),
       },
     ]
     const result = deduplicateOverlap(chunkResults)
@@ -92,7 +92,7 @@ describe("mergeLabels", () => {
       { id: 0, seek: 0, start: 0, end: 5, text: "Hola", tokens: [1, 2], temperature: 0, avg_logprob: -0.5, compression_ratio: 1.1, no_speech_prob: 0.1 },
       { id: 1, seek: 0, start: 5, end: 10, text: "Buenas", tokens: [3, 4], temperature: 0, avg_logprob: -0.4, compression_ratio: 1.0, no_speech_prob: 0.05 },
     ]
-    const labels = new Map<number, string>([[0, "Interviewer"], [1, "Tomasa"]])
+    const labels = new Map<number, Speaker>([[0, "Interviewer" as Speaker], [1, "Tomasa" as Speaker]])
     const result = mergeLabels(segments, labels)
     expect(result[0].speaker).toBe("Interviewer")
     expect(result[1].speaker).toBe("Tomasa")
@@ -103,7 +103,7 @@ describe("mergeLabels", () => {
 
   it("fills missing labels with 'unknown'", () => {
     const segments = [{ id: 0, seek: 0, start: 0, end: 5, text: "test", tokens: [], temperature: 0, avg_logprob: 0, compression_ratio: 1, no_speech_prob: 0 }]
-    const labels = new Map<number, string>() // empty — no label for seg 0
+    const labels = new Map<number, Speaker>() // empty — no label for seg 0
     const result = mergeLabels(segments, labels)
     expect(result[0].speaker).toBe("unknown")
   })
