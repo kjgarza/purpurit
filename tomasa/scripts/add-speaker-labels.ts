@@ -8,7 +8,6 @@
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from "fs"
 import { join } from "path"
-import Anthropic from "@anthropic-ai/sdk"
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -108,7 +107,6 @@ export function mergeLabels(
 
 const CHUNK_SIZE = 60
 const OVERLAP = 10
-const MODEL = "claude-haiku-4-5-20251001"
 
 const SYSTEM_PROMPT = `You are labeling segments from a Spanish-language oral history interview.
 There are exactly two speakers:
@@ -127,22 +125,30 @@ Return ONLY a JSON array. Each element: {"id": <number>, "speaker": "Tomasa" | "
 One object per input segment. No extra text, no markdown fences.`
 
 async function labelChunk(
-  client: Anthropic,
   chunk: MinSegment[],
   retries = 2
 ): Promise<Map<number, Speaker>> {
   const userContent = JSON.stringify(chunk.map((s) => ({ id: s.id, text: s.text })))
+  const fullPrompt = `${SYSTEM_PROMPT}\n\nSegments to label:\n${userContent}`
 
   for (let attempt = 0; attempt <= retries; attempt++) {
     try {
-      const response = await client.messages.create({
-        model: MODEL,
-        max_tokens: 1024,
-        system: SYSTEM_PROMPT,
-        messages: [{ role: "user", content: userContent }],
+      const proc = Bun.spawn(["claude", "-p", fullPrompt], {
+        stdout: "pipe",
+        stderr: "pipe",
       })
 
-      const raw = response.content[0].type === "text" ? response.content[0].text : ""
+      const [stdout, exitCode] = await Promise.all([
+        new Response(proc.stdout).text(),
+        proc.exited,
+      ])
+
+      if (exitCode !== 0) {
+        const stderr = await new Response(proc.stderr).text()
+        throw new Error(`claude exited ${exitCode}: ${stderr}`)
+      }
+
+      const raw = stdout.trim().replace(/^```(?:json)?\n?/, "").replace(/\n?```$/, "")
       const parsed: Array<{ id: number; speaker: string }> = JSON.parse(raw)
 
       const map = new Map<number, Speaker>()
@@ -158,6 +164,7 @@ async function labelChunk(
         continue
       }
       console.warn(`  ⚠ chunk starting at id=${chunk[0]?.id} failed after ${retries + 1} attempts, marking as unknown`)
+      console.error("  Last error:", err)
       return new Map()
     }
   }
@@ -165,7 +172,6 @@ async function labelChunk(
 }
 
 async function labelFile(
-  client: Anthropic,
   inputPath: string,
   outputPath: string
 ): Promise<void> {
@@ -189,7 +195,7 @@ async function labelFile(
     const chunk = chunks[i]
     const chunkStart = chunk[0].id
     process.stdout.write(`    chunk ${i + 1}/${chunks.length}...`)
-    const labels = await labelChunk(client, chunk)
+    const labels = await labelChunk(chunk)
     chunkResults.push({ chunkStart, chunkSize: chunk.length, labels })
     process.stdout.write(" ✓\n")
   }
@@ -218,8 +224,6 @@ if (import.meta.main) {
 
   if (!existsSync(OUTPUT_DIR)) mkdirSync(OUTPUT_DIR, { recursive: true })
 
-  const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
-
   const inputFiles = readdirSync(INPUT_DIR)
     .filter((f) => f.endsWith(".json"))
     .map((f) => ({ input: join(INPUT_DIR, f), output: join(OUTPUT_DIR, f) }))
@@ -227,7 +231,7 @@ if (import.meta.main) {
   console.log(`Labeling ${inputFiles.length} transcript(s)...\n`)
 
   await Promise.all(
-    inputFiles.map(({ input, output }) => labelFile(client, input, output))
+    inputFiles.map(({ input, output }) => labelFile(input, output))
   )
 
   console.log("\nDone. Labeled files in:", OUTPUT_DIR)
