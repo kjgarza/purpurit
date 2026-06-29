@@ -36,6 +36,11 @@ const FILES = [
     cache: join(CACHE_DIR, "wednesday-17-57.json"),
   },
   {
+    id: "sunday-21-32",
+    path: join(DATA_DIR, "tommy-01-Sunday", "Sunday-at-21-32.m4a"),
+    cache: join(CACHE_DIR, "sunday-21-32.json"),
+  },
+  {
     id: "tomasa-nov20-0805",
     path: join(DATA_DIR, "tomasa-Nov-20-at-08-05", "Copy of Nov 20 at 08-05.m4a"),
     cache: join(CACHE_DIR, "tomasa-nov20-0805.json"),
