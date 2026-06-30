@@ -84,6 +84,25 @@ export function buildContext(
   return lines.join("\n")
 }
 
+/**
+ * Extract the corrected segment text from Claude's JSON response.
+ * Strips optional markdown fences, parses `{"text": "..."}`, and returns the
+ * trimmed text. Throws if the response is not valid JSON with a string `text`
+ * field — the caller treats that as a failed attempt (fail-safe to original).
+ */
+export function extractFilledText(raw: string): string {
+  const stripped = raw
+    .trim()
+    .replace(/^```(?:json)?\n?/, "")
+    .replace(/\n?```$/, "")
+    .trim()
+  const parsed = JSON.parse(stripped)
+  if (typeof parsed?.text !== "string") {
+    throw new Error("response missing string 'text' field")
+  }
+  return parsed.text.trim()
+}
+
 // ─── Claude Fill ──────────────────────────────────────────────────────────────
 
 const CLAUDE_MODEL = "sonnet"
@@ -106,10 +125,16 @@ Chihuahua accent (shesheo) — apply sparingly, only if already hinted phonetica
 muchacho→mushasho, chile→shile, ocho→osho, escúchame→escúshame.
 
 Rules:
-- Replace any [INAUDIBLE]/[inaudible] markers with the most plausible words from context.
-- Fix obvious mis-hearings of the known names/places above.
-- Keep Tomasa's natural voice; do not paraphrase or add content beyond the segment.
-- Return ONLY the corrected segment text. No quotes, no commentary, no markdown fences.`
+- Be conservative. If the marked segment is already coherent Spanish and the context gives
+  no clear evidence of an ASR error, return it EXACTLY as-is. Do NOT paraphrase, "improve",
+  or guess alternative words. Inventing words she did not say corrupts the record.
+- Only change text when there is a [INAUDIBLE]/[inaudible] marker to fill, or a clear
+  mis-hearing of one of the known names/places above.
+- Keep Tomasa's natural voice; do not add content beyond the segment.
+
+Respond with ONLY a JSON object: {"text": "<the corrected segment text, or the original
+text unchanged if there is no clear error>"}. No speaker name, no commentary, no markdown
+fences, no extra keys. The "text" value must never contain explanations — only the segment.`
 
 /**
  * Ask Claude to correct a single flagged segment given its context.
@@ -120,7 +145,7 @@ export async function fillSegment(
   context: string,
   retries = 2
 ): Promise<string> {
-  const prompt = `${SYSTEM_PROMPT}\n\nContext:\n${context}\n\nCorrected text for the ">>" segment:`
+  const prompt = `${SYSTEM_PROMPT}\n\nContext:\n${context}\n\nJSON for the ">>" segment:`
 
   for (let attempt = 0; attempt <= retries; attempt++) {
     try {
@@ -139,11 +164,7 @@ export async function fillSegment(
         throw new Error(`claude exited ${exitCode}: ${stderr}`)
       }
 
-      const cleaned = stdout
-        .trim()
-        .replace(/^```(?:\w+)?\n?/, "")
-        .replace(/\n?```$/, "")
-        .trim()
+      const cleaned = extractFilledText(stdout)
 
       if (cleaned.length > 0) return cleaned
       throw new Error("empty response")
@@ -181,9 +202,12 @@ export async function fillFile(inputPath: string, outputPath: string): Promise<v
     const target = segments[idx]
     const context = buildContext(segments, idx)
     const corrected = await fillSegment(target, context)
-    if (corrected !== target.text) {
+    // Only count meaningful changes — ignore whitespace-only diffs (Whisper
+    // segments carry a leading space the model tends to drop).
+    if (corrected.trim() !== target.text.trim()) {
+      const leadingSpace = /^\s/.test(target.text) ? " " : ""
       target.original_text = target.text
-      target.text = corrected
+      target.text = leadingSpace + corrected
       target.gap_filled = true
       filledCount++
     }

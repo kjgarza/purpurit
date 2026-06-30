@@ -1,5 +1,10 @@
 import { describe, it, expect } from "bun:test"
-import { flagSegments, buildContext, type LabeledSegment } from "./fill-transcript-gaps"
+import {
+  flagSegments,
+  buildContext,
+  extractFilledText,
+  type LabeledSegment,
+} from "./fill-transcript-gaps"
 
 const seg = (over: Partial<LabeledSegment> = {}): LabeledSegment => ({
   id: 0,
@@ -74,5 +79,27 @@ describe("buildContext", () => {
   it("defaults radius to 3", () => {
     const out = buildContext(segs, 5)
     expect(out.split("\n")).toHaveLength(7) // 2..8
+  })
+})
+
+describe("extractFilledText", () => {
+  it("parses a bare JSON object", () => {
+    expect(extractFilledText('{"text": "¿De qué son?"}')).toBe("¿De qué son?")
+  })
+
+  it("parses JSON wrapped in markdown fences", () => {
+    expect(extractFilledText('```json\n{"text": "El caballo"}\n```')).toBe("El caballo")
+  })
+
+  it("trims the extracted text", () => {
+    expect(extractFilledText('{"text": "  El caballo  "}')).toBe("El caballo")
+  })
+
+  it("throws on non-JSON commentary (caller falls back to original)", () => {
+    expect(() => extractFilledText("Segment fine, return as-is")).toThrow()
+  })
+
+  it("throws when 'text' field is missing or non-string", () => {
+    expect(() => extractFilledText('{"corrected": "x"}')).toThrow()
   })
 })
