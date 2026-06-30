@@ -107,6 +107,7 @@ export function mergeLabels(
 
 const CHUNK_SIZE = 60
 const OVERLAP = 10
+const CLAUDE_MODEL = "haiku"
 
 const SYSTEM_PROMPT = `You are labeling segments from a Spanish-language oral history interview.
 There are exactly two speakers:
@@ -133,10 +134,11 @@ async function labelChunk(
 
   for (let attempt = 0; attempt <= retries; attempt++) {
     try {
-      const proc = Bun.spawn(["claude", "-p", fullPrompt], {
+      const proc = Bun.spawn(["claude", "-p", "--model", CLAUDE_MODEL, fullPrompt], {
         stdout: "pipe",
         stderr: "pipe",
       })
+
 
       const [stdout, exitCode] = await Promise.all([
         new Response(proc.stdout).text(),
@@ -175,15 +177,16 @@ async function labelFile(
   inputPath: string,
   outputPath: string
 ): Promise<void> {
-  const raw = JSON.parse(readFileSync(inputPath, "utf-8"))
-  const segments: RawSegment[] = raw.segments ?? []
   const filename = inputPath.split("/").pop()!
 
-  // Skip if already labeled
-  if (segments[0] && "speaker" in segments[0]) {
+  // Skip if output already exists (resume across runs)
+  if (existsSync(outputPath)) {
     console.log(`✓ Already labeled: ${filename}`)
     return
   }
+
+  const raw = JSON.parse(readFileSync(inputPath, "utf-8"))
+  const segments: RawSegment[] = raw.segments ?? []
 
   const minSegs: MinSegment[] = segments.map((s) => ({ id: s.id, text: s.text }))
   const chunks = chunkSegments(minSegs, CHUNK_SIZE, OVERLAP)
