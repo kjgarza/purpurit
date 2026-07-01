@@ -231,9 +231,14 @@ export function formatBeats(beats: LabeledSegment[]): string {
   return beats.map((s) => `${s.id} | ${s.speaker} | ${s.text.trim()}`).join("\n")
 }
 
-/** Double-quoted YAML scalar with backslash and quote escaping. */
+/** Double-quoted YAML scalar with backslash, quote, and control-char escaping. */
 export function yamlQuote(value: string): string {
-  return `"${value.replace(/\\/g, "\\\\").replace(/"/g, '\\"')}"`
+  return `"${value
+    .replace(/\\/g, "\\\\")
+    .replace(/"/g, '\\"')
+    .replace(/\n/g, "\\n")
+    .replace(/\r/g, "\\r")
+    .replace(/\t/g, "\\t")}"`
 }
 
 /**

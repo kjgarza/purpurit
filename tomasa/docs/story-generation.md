@@ -21,6 +21,8 @@ pass/fail score
 
 ## Generating a draft
 
+Run these commands from the `tomasa/` subdirectory (e.g. `cd tomasa &&`).
+
 Two ways to select beats:
 
 **Explicit segment range** — when you already know where the story lives

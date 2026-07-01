@@ -10,8 +10,8 @@ import {
   buildFrontmatter,
   extractDraft,
   extractSelectedIds,
-  type LabeledSegment,
 } from "./generate-story"
+import type { LabeledSegment } from "./generate-story"
 
 const seg = (over: Partial<LabeledSegment> = {}): LabeledSegment => ({
   id: 0,
@@ -213,6 +213,10 @@ describe("formatBeats", () => {
 describe("yamlQuote", () => {
   it("escapes quotes and backslashes", () => {
     expect(yamlQuote('dijo "mijo" \\ ya')).toBe('"dijo \\"mijo\\" \\\\ ya"')
+  })
+
+  it("escapes newlines, carriage returns, and tabs", () => {
+    expect(yamlQuote("linea1\nlinea2\r\ttab")).toBe('"linea1\\nlinea2\\r\\ttab"')
   })
 })
 
