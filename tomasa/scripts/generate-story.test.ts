@@ -146,6 +146,14 @@ describe("parseStoryArgs", () => {
       expect(() => parseStoryArgs(argv)).toThrow('Invalid --story')
     }
   )
+
+  it.each([["1930"], ["1930S"], ["thirties"], ["1930s\nfoo:"], ["1930s:"]])(
+    "rejects a malformed --decade %s",
+    (decade) => {
+      const argv = base.map((v, i) => (base[i - 1] === "--decade" ? decade : v))
+      expect(() => parseStoryArgs(argv)).toThrow("Invalid --decade")
+    }
+  )
 })
 
 describe("selectByRange", () => {

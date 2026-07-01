@@ -83,6 +83,8 @@ export interface StoryDraft {
 // Both values end up in filesystem paths — reject separators, dots, "..".
 const TRANSCRIPT_NAME_RE = /^[A-Za-z0-9_-]+$/
 const STORY_ID_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/
+// --decade lands unquoted in YAML frontmatter — restrict its shape to prevent injection.
+const DECADE_RE = /^\d{4}s$/
 
 /**
  * Parse a --transcript value: "<name>" or "<name>:<start>-<end>".
@@ -173,6 +175,9 @@ export function parseStoryArgs(argv: string[]): StoryArgs {
   }
   if (!title) throw new Error("--title is required")
   if (!decade) throw new Error("--decade is required (e.g. 1930s)")
+  if (!DECADE_RE.test(decade)) {
+    throw new Error(`Invalid --decade "${decade}" — must match "<4 digits>s", e.g. 1930s`)
+  }
 
   const missingRange = transcripts.filter((t) => !t.range)
   if (missingRange.length > 0 && !theme) {
@@ -384,8 +389,11 @@ async function selectBeatsByTheme(
       selected.push(...ids)
       process.stdout.write(` ✓ (${ids.length})\n`)
     } catch (err) {
-      process.stdout.write(" ⚠ skipped\n")
-      console.error("    Last error:", err)
+      process.stdout.write(" ✗ failed\n")
+      throw new Error(
+        `${name}: beat selection failed on chunk ${i + 1}/${chunks.length} after retries`,
+        { cause: err }
+      )
     }
   }
 
