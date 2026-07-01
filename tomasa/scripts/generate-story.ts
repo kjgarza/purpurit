@@ -80,13 +80,24 @@ export interface StoryDraft {
 
 // ─── Pure Helpers (exported for testing) ─────────────────────────────────────
 
+// Both values end up in filesystem paths — reject separators, dots, "..".
+const TRANSCRIPT_NAME_RE = /^[A-Za-z0-9_-]+$/
+const STORY_ID_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/
+
 /**
  * Parse a --transcript value: "<name>" or "<name>:<start>-<end>".
  * The range is a segment-id range within that transcript, inclusive.
  */
 export function parseTranscriptSpec(spec: string): TranscriptSpec {
   const colon = spec.lastIndexOf(":")
-  if (colon === -1) return { name: spec }
+  if (colon === -1) {
+    if (!TRANSCRIPT_NAME_RE.test(spec)) {
+      throw new Error(
+        `Invalid transcript name "${spec}" — only letters, digits, "_" and "-" are allowed`
+      )
+    }
+    return { name: spec }
+  }
 
   const name = spec.slice(0, colon)
   const rangePart = spec.slice(colon + 1)
@@ -94,6 +105,11 @@ export function parseTranscriptSpec(spec: string): TranscriptSpec {
   if (!name || !match) {
     throw new Error(
       `Invalid --transcript spec "${spec}" — expected "<name>" or "<name>:<start>-<end>"`
+    )
+  }
+  if (!TRANSCRIPT_NAME_RE.test(name)) {
+    throw new Error(
+      `Invalid transcript name "${name}" — only letters, digits, "_" and "-" are allowed`
     )
   }
 
@@ -150,6 +166,11 @@ export function parseStoryArgs(argv: string[]): StoryArgs {
 
   if (transcripts.length === 0) throw new Error("At least one --transcript is required")
   if (!story) throw new Error("--story is required (kebab-case id, e.g. poor-child)")
+  if (!STORY_ID_RE.test(story)) {
+    throw new Error(
+      `Invalid --story "${story}" — must be a kebab-case id (lowercase letters/digits/hyphens, e.g. poor-child)`
+    )
+  }
   if (!title) throw new Error("--title is required")
   if (!decade) throw new Error("--decade is required (e.g. 1930s)")
 

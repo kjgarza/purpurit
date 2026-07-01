@@ -49,6 +49,17 @@ describe("parseTranscriptSpec", () => {
   it("rejects an inverted range", () => {
     expect(() => parseTranscriptSpec("foo:428-395")).toThrow("start 428 > end 395")
   })
+
+  it.each([
+    ["../secrets"],
+    ["../secrets:1-5"],
+    ["a/b"],
+    ["a\\b:1-5"],
+    ["..:1-5"],
+    ["."],
+  ])("rejects path-like transcript name %s", (spec) => {
+    expect(() => parseTranscriptSpec(spec)).toThrow(/Invalid/)
+  })
 })
 
 describe("parseStoryArgs", () => {
@@ -127,6 +138,14 @@ describe("parseStoryArgs", () => {
   it("rejects unknown flags", () => {
     expect(() => parseStoryArgs([...base, "--bogus"])).toThrow("Unknown argument")
   })
+
+  it.each([["../decades"], ["a/b"], ["Poor-Child"], ["poor child"], ["poor--child"], ["poor-child-"]])(
+    "rejects non-kebab-case / path-like --story %s",
+    (story) => {
+      const argv = base.map((v, i) => (base[i - 1] === "--story" ? story : v))
+      expect(() => parseStoryArgs(argv)).toThrow('Invalid --story')
+    }
+  )
 })
 
 describe("selectByRange", () => {
