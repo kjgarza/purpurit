@@ -93,8 +93,8 @@ export function buildContext(
 export function extractFilledText(raw: string): string {
   const stripped = raw
     .trim()
-    .replace(/^```(?:json)?\n?/, "")
-    .replace(/\n?```$/, "")
+    .replace(/^```(?:json)?\r?\n?/i, "")
+    .replace(/\r?\n?```$/, "")
     .trim()
   const parsed = JSON.parse(stripped)
   if (typeof parsed?.text !== "string") {
