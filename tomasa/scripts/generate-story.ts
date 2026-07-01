@@ -327,7 +327,16 @@ export function extractSelectedIds(raw: string): number[] {
 const CLAUDE_MODEL = "sonnet"
 const SELECT_CHUNK_SIZE = 120
 
-async function runClaude(prompt: string, retries = 2): Promise<string> {
+/**
+ * Run the claude subprocess and parse its output with `parse`. Retries on
+ * both subprocess failure AND parse failure — a malformed/fenced response is
+ * usually transient, same as fill-transcript-gaps.ts / add-speaker-labels.ts.
+ */
+async function runClaude<T>(
+  prompt: string,
+  parse: (raw: string) => T,
+  retries = 2
+): Promise<T> {
   let lastErr: unknown
   for (let attempt = 0; attempt <= retries; attempt++) {
     try {
@@ -345,7 +354,7 @@ async function runClaude(prompt: string, retries = 2): Promise<string> {
         const stderr = await new Response(proc.stderr).text()
         throw new Error(`claude exited ${exitCode}: ${stderr}`)
       }
-      return stdout
+      return parse(stdout)
     } catch (err) {
       lastErr = err
       if (attempt < retries) {
@@ -385,7 +394,7 @@ async function selectBeatsByTheme(
     process.stdout.write(`    ${name}: selecting beats, chunk ${i + 1}/${chunks.length}...`)
     const prompt = `${SELECT_SYSTEM_PROMPT}\n\nTheme: ${theme}\n\nSegments:\n${JSON.stringify(chunks[i])}`
     try {
-      const ids = extractSelectedIds(await runClaude(prompt))
+      const ids = await runClaude(prompt, extractSelectedIds)
       selected.push(...ids)
       process.stdout.write(` ✓ (${ids.length})\n`)
     } catch (err) {
@@ -439,8 +448,7 @@ async function draftStory(
     `${DRAFT_SYSTEM_PROMPT}\n\nStory: ${args.title} (decade: ${args.decade})${themeLine}` +
     `\n\nInterview beats (id | speaker | text):\n${beatsBlock}\n\nJSON draft:`
 
-  const raw = await runClaude(prompt)
-  return extractDraft(raw)
+  return runClaude(prompt, extractDraft)
 }
 
 // ─── Main ────────────────────────────────────────────────────────────────────
