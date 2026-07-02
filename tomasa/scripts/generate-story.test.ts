@@ -320,4 +320,21 @@ describe("extractSelectedIds", () => {
   it("throws on a non-array response", () => {
     expect(() => extractSelectedIds('{"ids": [1]}')).toThrow("not a JSON array")
   })
+
+  it("returns [] on a prose 'no matches' reply with no array", () => {
+    expect(extractSelectedIds("No matching segments.")).toEqual([])
+    expect(extractSelectedIds("No hay segmentos que coincidan con el tema.")).toEqual([])
+  })
+
+  it("returns [] when a prose reply mentions an empty array", () => {
+    expect(extractSelectedIds("No hay coincidencias, así que devuelvo [].")).toEqual([])
+  })
+
+  it("extracts the array from a prose reply that wraps it", () => {
+    expect(extractSelectedIds("Aquí están: [395, 396].")).toEqual([395, 396])
+  })
+
+  it("rethrows a prose reply with a present-but-malformed array", () => {
+    expect(() => extractSelectedIds("ids: [1, 2, foo]")).toThrow()
+  })
 })
