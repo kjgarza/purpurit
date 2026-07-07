@@ -338,7 +338,7 @@ export function extractSelectedIds(raw: string): number[] {
     // first bracketed array and parse that; if there is none, treat it as "no
     // beats matched" rather than burning all retries on a deterministic
     // non-answer. A present-but-malformed bracket still throws (→ retry).
-    const match = raw.match(/\[[\s\S]*\]/)
+    const match = raw.match(/\[[\s\S]*?\]/)
     return match ? toIds(JSON.parse(match[0])) : []
   }
   // A structured non-array response (e.g. {"ids": [...]}) is malformed — throw
