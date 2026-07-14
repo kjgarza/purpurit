@@ -315,11 +315,35 @@ export function extractDraft(raw: string): StoryDraft {
   }
 }
 
-/** Parse Claude's beat-selection response: a JSON array of segment ids. */
+/**
+ * Parse Claude's beat-selection response: a JSON array of segment ids.
+ * Despite the "return []" instruction, Claude sometimes answers an empty chunk
+ * in prose ("No matching segments.") instead of `[]`. Rather than throw and burn
+ * all retries on a deterministic non-answer, locate the JSON array within the
+ * response; if there is none, treat it as "no beats matched" and return [].
+ */
 export function extractSelectedIds(raw: string): number[] {
-  const parsed = extractJson(raw)
-  if (!Array.isArray(parsed)) throw new Error("response is not a JSON array")
-  return parsed.filter((id): id is number => Number.isInteger(id))
+  const toIds = (parsed: unknown): number[] => {
+    if (!Array.isArray(parsed)) throw new Error("response is not a JSON array")
+    return parsed.filter((id): id is number => Number.isInteger(id))
+  }
+
+  let parsed: unknown
+  try {
+    parsed = extractJson(raw)
+  } catch {
+    // The whole response isn't JSON — it's prose. Claude sometimes ignores the
+    // "return []" instruction and answers an empty chunk in prose ("No hay
+    // segmentos que coincidan."), which may itself mention "[]". Pull out the
+    // first bracketed array and parse that; if there is none, treat it as "no
+    // beats matched" rather than burning all retries on a deterministic
+    // non-answer. A present-but-malformed bracket still throws (→ retry).
+    const match = raw.match(/\[[\s\S]*?\]/)
+    return match ? toIds(JSON.parse(match[0])) : []
+  }
+  // A structured non-array response (e.g. {"ids": [...]}) is malformed — throw
+  // so runClaude retries it.
+  return toIds(parsed)
 }
 
 // ─── Claude Subprocess ────────────────────────────────────────────────────────
