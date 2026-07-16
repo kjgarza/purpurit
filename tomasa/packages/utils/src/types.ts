@@ -25,6 +25,7 @@ export interface Decade {
   coverImage: string
   coverImageAlt: string
   ambientAudioSrc?: string
+  chapter?: string
   slides: Slide[]
 }
 

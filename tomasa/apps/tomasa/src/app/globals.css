@@ -3,7 +3,6 @@
 /* Include shadcn/ui components from monorepo packages */
 @source "../../../../packages/ui/src";
 
-/* Tailwind plugins — declared as CSS directives in v4 */
 @plugin "tailwindcss-animate";
 @plugin "@tailwindcss/typography";
 
@@ -36,33 +35,44 @@
 
 /* Custom font variables — set in layout.tsx via next/font */
 @theme inline {
-  --font-sans: var(--font-inter), system-ui, sans-serif;
-  --font-serif: var(--font-lora), Georgia, serif;
-  --font-display: var(--font-playfair), Georgia, serif;
+  --font-sans: var(--font-archivo), system-ui, sans-serif;
+  --font-serif: var(--font-source-serif), Georgia, serif;
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-hand: var(--font-caveat), cursive;
 }
 
-/* Base theme CSS custom properties — emerald & dusty rose palette */
+/* Base theme CSS custom properties — Casa Azul Editorial palette */
 :root {
-  --background: oklch(0.94 0.03 160);
-  --foreground: oklch(0.28 0.06 155);
-  --card: oklch(0.92 0.04 160);
-  --card-foreground: oklch(0.28 0.06 155);
-  --popover: oklch(0.94 0.03 160);
-  --popover-foreground: oklch(0.28 0.06 155);
-  --primary: oklch(0.45 0.12 158);
-  --primary-foreground: oklch(0.94 0.03 160);
-  --secondary: oklch(0.90 0.03 160);
-  --secondary-foreground: oklch(0.28 0.06 155);
-  --muted: oklch(0.90 0.03 160);
-  --muted-foreground: oklch(0.55 0.08 158);
-  --accent: oklch(0.72 0.18 350);
-  --accent-foreground: oklch(0.28 0.06 155);
-  --destructive: oklch(0.55 0.2 25);
-  --destructive-foreground: oklch(0.94 0.03 160);
-  --border: oklch(0.85 0.04 160);
-  --input: oklch(0.85 0.04 160);
-  --ring: oklch(0.45 0.12 158);
-  --radius: 0.5rem;
+  /* Core Casa Azul tokens */
+  --cobalt: #1646A0;
+  --cobalt-deep: #0E2A5C;
+  --paper: #F1E4C5;
+  --marigold: #F2B705;
+  --cochineal: #C7352D;
+  --cactus: #315B43;
+  --clay: #B65A3A;
+  --ink: #211A17;
+
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: var(--paper);
+  --card-foreground: var(--ink);
+  --popover: var(--paper);
+  --popover-foreground: var(--ink);
+  --primary: var(--cobalt);
+  --primary-foreground: var(--paper);
+  --secondary: var(--cactus);
+  --secondary-foreground: var(--paper);
+  --muted: oklch(0.88 0.04 85);
+  --muted-foreground: oklch(0.45 0.03 60);
+  --accent: var(--marigold);
+  --accent-foreground: var(--ink);
+  --destructive: var(--cochineal);
+  --destructive-foreground: var(--paper);
+  --border: oklch(0.82 0.05 85);
+  --input: oklch(0.82 0.05 85);
+  --ring: var(--cobalt);
+  --radius: 0rem; /* editorial: square corners */
 }
 
 /* Scroll-snap utilities */
@@ -73,18 +83,16 @@
   scroll-snap-align: start;
 }
 
-/* Skip rendering/painting offscreen slides — degrades gracefully on older browsers */
+/* Skip rendering/painting offscreen slides */
 .slide-offscreen {
   content-visibility: auto;
   contain-intrinsic-size: 0 100dvh;
 }
 
 /* Canvas texture system — opt-in via class names */
-
 .canvas-grain {
   position: relative;
 }
-
 .canvas-grain::before {
   content: "";
   position: absolute;
@@ -93,79 +101,57 @@
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.45' numOctaves='6' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
   background-size: 512px 512px;
-  opacity: 0.08;
+  opacity: 0.09;
   mix-blend-mode: multiply;
 }
 
-.canvas-grain::after {
+/* Cobalt duotone wash for decade cover photos */
+.duotone-cobalt {
+  position: relative;
+}
+.duotone-cobalt::after {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.2' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
-  background-size: 512px 512px;
-  opacity: 0.18;
-  mix-blend-mode: soft-light;
+  background: var(--cobalt);
+  mix-blend-mode: color;
+  opacity: 0.55;
 }
 
-.canvas-vignette {
-  position: relative;
-}
-
-.canvas-vignette::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  box-shadow: inset 0 0 160px 70px oklch(0.22 0.06 155 / 0.15);
-}
-
-.canvas-gradient {
-  position: relative;
-}
-
-.canvas-gradient::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse at 20% 10%, oklch(0.82 0.10 162 / 0.5) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 90%, oklch(0.82 0.12 350 / 0.25) 0%, transparent 40%),
-    linear-gradient(180deg, oklch(0.90 0.05 160 / 0.3) 0%, transparent 25%, oklch(0.86 0.06 155 / 0.25) 100%);
-}
-
-/* Editorial slide label — small caps context label */
+/* Editorial furniture: eyebrow + rule row */
 .slide-label {
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
+  font-size: 0.65rem;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  font-variant: small-caps;
-  font-weight: 400;
+  font-weight: 700;
+}
+.editorial-rule {
+  width: 46px;
+  height: 3px;
+  background: var(--cochineal);
 }
 
-/* ─── Slide entrance animations ─────────────────────────── */
+/* Washi tape strip on taped drawings */
+.washi-tape {
+  position: absolute;
+  width: 64px;
+  height: 20px;
+  background: oklch(0.82 0.17 85 / 0.85); /* translucent marigold */
+}
+
+/* ─── Slide entrance animations (unchanged) ─────────────── */
 
 @keyframes slide-up-fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes fade-in {
   from { opacity: 0; }
-  to   { opacity: 1; }
+  to { opacity: 1; }
 }
 
-/* Default: invisible until parent marks slide visible */
 .slide-animate,
 .slide-animate-d1,
 .slide-animate-d2,
@@ -174,53 +160,38 @@
 .slide-scrim {
   opacity: 0;
 }
-
 [data-slide-visible] .slide-animate {
   animation: slide-up-fade-in 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-
 [data-slide-visible] .slide-animate-d1 {
   animation: slide-up-fade-in 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
 }
-
 [data-slide-visible] .slide-animate-d2 {
   animation: slide-up-fade-in 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
 }
-
 [data-slide-visible] .slide-animate-d3 {
   animation: slide-up-fade-in 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards;
 }
-
 [data-slide-visible] .slide-animate-fade {
   animation: fade-in 1s ease 0.1s forwards;
 }
 
-/* Scrim overlay entrance */
 @keyframes scrim-in {
   from { opacity: 0; }
-  to   { opacity: 1; }
+  to { opacity: 1; }
 }
-
 [data-slide-visible] .slide-scrim {
   animation: scrim-in 1.2s ease forwards;
 }
 
-/* Shaped image entrance — scale up + fade */
-@keyframes shape-entrance {
-  from {
-    opacity: 0;
-    transform: scale(0.88) translateY(18px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
+/* Taped-paper entrance — slight settle */
+@keyframes paper-entrance {
+  from { opacity: 0; transform: scale(0.92) translateY(18px) rotate(var(--paper-rotate, 0deg)); }
+  to { opacity: 1; transform: scale(1) translateY(0) rotate(var(--paper-rotate, 0deg)); }
 }
-
 .slide-animate-shape {
   opacity: 0;
 }
-
 [data-slide-visible] .slide-animate-shape {
-  animation: shape-entrance 1s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
+  animation: paper-entrance 1s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
 }
