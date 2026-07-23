@@ -17,7 +17,7 @@ export function ArtworkSlide({
   onOpenLightbox,
 }: {
   slide: Slide
-  onOpenLightbox?: (imageSrc: string, caption?: string) => void
+  onOpenLightbox: (imageSrc: string, caption?: string) => void
 }) {
   const rotate = pickRotation(slide.id)
 
@@ -31,7 +31,7 @@ export function ArtworkSlide({
           <button
             type="button"
             className="group relative cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--marigold)] focus-visible:ring-offset-4 slide-animate"
-            onClick={() => onOpenLightbox?.(mediaPath(slide.imageSrc!), slide.caption)}
+            onClick={() => onOpenLightbox(mediaPath(slide.imageSrc!), slide.caption)}
             aria-label={slide.imageAlt ?? "Ver dibujo en tamaño completo"}
           >
             {/* Paper sheet taped to the cobalt wall */}
@@ -78,12 +78,14 @@ export function ArtworkSlide({
                 {slide.attribution}
               </p>
             )}
-            <p
-              className="mt-2 text-[10px] tracking-[0.22em] uppercase slide-animate-d2"
-              style={{ color: "oklch(0.92 0.05 85 / 0.55)" }}
-            >
-              Toca para ampliar
-            </p>
+            {slide.imageSrc && (
+              <p
+                className="mt-2 text-[10px] tracking-[0.22em] uppercase slide-animate-d2"
+                style={{ color: "oklch(0.92 0.05 85 / 0.55)" }}
+              >
+                Toca para ampliar
+              </p>
+            )}
           </div>
         )}
       </div>

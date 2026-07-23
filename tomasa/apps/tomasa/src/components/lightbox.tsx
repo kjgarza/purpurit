@@ -52,7 +52,10 @@ export function Lightbox({ imageSrc, caption, onClose }: LightboxProps) {
               backgroundColor: "transparent",
               border: "1.5px solid oklch(0.82 0.17 85 / 0.6)",
             }}
-            onClick={onClose}
+            onClick={(e) => {
+              e.stopPropagation()
+              onClose()
+            }}
             aria-label="Cerrar"
           >
             <svg
