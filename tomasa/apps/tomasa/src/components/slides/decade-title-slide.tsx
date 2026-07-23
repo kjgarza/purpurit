@@ -33,7 +33,7 @@ export function DecadeTitleSlide({ decade, priority = false }: { decade: Decade;
       >
         <div className="mb-1.5 flex items-center gap-3 slide-animate">
           <span className="slide-label" style={{ color: "var(--marigold)" }}>
-            Capítulo {decade.chapter ?? ""}
+            Capítulo{decade.chapter ? ` ${decade.chapter}` : ""}
           </span>
           <span className="h-px flex-1" style={{ backgroundColor: "oklch(0.92 0.05 85 / 0.35)" }} />
         </div>
