@@ -3,11 +3,6 @@ import type { Decade } from "@repo/utils"
 import { mediaPath } from "@/lib/base-path"
 
 export function DecadeTitleSlide({ decade, priority = false }: { decade: Decade; priority?: boolean }) {
-  // `chapter` is not part of the shared Decade type (style-only PR scope);
-  // read it locally so content authors can opt in via content/decades.ts
-  // without widening the shared contract.
-  const chapter = (decade as Partial<{ chapter: string }>).chapter
-
   return (
     <div className="snap-start relative min-h-dvh flex flex-col" style={{ backgroundColor: "var(--cobalt)" }}>
       {/* Cover photo with cobalt duotone wash */}
@@ -37,11 +32,6 @@ export function DecadeTitleSlide({ decade, priority = false }: { decade: Decade;
         }}
       >
         <div className="mb-1.5 flex items-center gap-3 slide-animate">
-          {chapter && (
-            <span className="slide-label" style={{ color: "var(--marigold)" }}>
-              Capítulo {chapter}
-            </span>
-          )}
           <span className="h-px flex-1" style={{ backgroundColor: "oklch(0.92 0.05 85 / 0.35)" }} />
         </div>
         <p
