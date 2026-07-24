@@ -2,145 +2,94 @@ import Image from "next/image"
 import type { Slide } from "@repo/utils"
 import { mediaPath } from "@/lib/base-path"
 
-// ─── 5 organic shape variants via CSS border-radius ──────────────────
-// Each entry: [borderRadius, widthPx, heightPx, rotationDeg]
-// border-radius syntax: "topLeft topRight bottomRight bottomLeft / vertTopLeft vertTopRight vertBottomRight vertBottomLeft"
-type ShapeVariant = {
-  borderRadius: string
-  width: number
-  height: number
-  rotate: number
-}
-
-const SHAPES: ShapeVariant[] = [
-  // 0 — Classic oval (portrait ellipse)
-  {
-    borderRadius: "50%",
-    width: 248,
-    height: 308,
-    rotate: 0,
-  },
-  // 1 — Arch / tombstone (flat bottom, arched top)
-  {
-    borderRadius: "100% 100% 0 0 / 58% 58% 0 0",
-    width: 240,
-    height: 310,
-    rotate: 0,
-  },
-  // 2 — Organic blob (asymmetric rounded)
-  {
-    borderRadius: "62% 38% 46% 54% / 60% 44% 56% 40%",
-    width: 268,
-    height: 288,
-    rotate: 6,
-  },
-  // 3 — Droplet / teardrop (wider at bottom, pinched at top)
-  {
-    borderRadius: "50% 50% 50% 50% / 68% 68% 32% 32%",
-    width: 250,
-    height: 304,
-    rotate: -3,
-  },
-  // 4 — Leaf / petal (pointed sides, full height)
-  {
-    borderRadius: "76% 24% 76% 24% / 52% 52% 48% 48%",
-    width: 236,
-    height: 316,
-    rotate: 4,
-  },
-]
-
-/** Deterministic shape picker from slide id */
-function pickShape(id: string): ShapeVariant {
+/** Deterministic tilt from slide id */
+function pickRotation(id: string): number {
   let h = 5381
   for (let i = 0; i < id.length; i++) {
     h = (Math.imul(h, 31) + id.charCodeAt(i)) | 0
   }
-  return SHAPES[Math.abs(h) % SHAPES.length]
+  const options = [-5, -3, 3, 4, 5]
+  return options[Math.abs(h) % options.length]
 }
 
 export function NarrativeSlide({ slide }: { slide: Slide }) {
   const hasImage = Boolean(slide.imageSrc)
-  const shape = pickShape(slide.id)
+  const rotate = pickRotation(slide.id)
 
   return (
     <div className="snap-start relative min-h-dvh flex flex-col overflow-hidden">
-      {/* Cream background */}
+      {/* Aged-paper background */}
       <div className="absolute inset-0 bg-background" />
 
-      {/* Thin emerald top border */}
-      <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ backgroundColor: "var(--primary)", opacity: 0.6 }} />
-
-      {/* ── Text block ─────────────────────────────────────── */}
+      {/* Cobalt running head with editorial furniture */}
       <div
-        className="relative z-10 flex flex-col px-6 pt-12 pb-0 md:pl-20 md:pr-16 md:pt-16"
+        className="relative z-10 flex items-center gap-3 px-6 pb-3 pt-14 md:pl-24 md:pr-12 md:pt-6"
+        style={{ backgroundColor: "var(--cobalt)" }}
+      >
+        <span className="slide-label" style={{ color: "var(--marigold)" }}>
+          {slide.subtitle ?? "Recuerdo"}
+        </span>
+        <span className="h-px flex-1" style={{ backgroundColor: "oklch(0.92 0.05 85 / 0.3)" }} />
+      </div>
+
+      {/* ── Text block ── */}
+      <div
+        className="relative z-10 flex flex-col px-6 pt-8 pb-0 md:pl-24 md:pr-16 md:pt-12"
         style={{ maxWidth: "min(680px, 100%)" }}
       >
-        <p className="slide-label mb-4 slide-animate" style={{ color: "var(--primary)" }}>
-          {slide.subtitle ?? "Recuerdo"}
-        </p>
-
         {slide.title && (
-          <h3 className="font-display font-black text-[2.6rem] leading-[1.0] md:text-[4rem] md:leading-[1.0] text-foreground tracking-tight slide-animate-d1">
+          <h3 className="font-display font-black text-[2.6rem] leading-[0.98] tracking-tight text-foreground slide-animate md:text-[4rem] md:leading-[0.98]">
             {slide.title}
           </h3>
         )}
 
+        <div className="editorial-rule mt-5 slide-animate-d1" />
+
         {slide.text && (
-          <p className="font-serif text-lg md:text-xl text-foreground/72 leading-relaxed mt-5 max-w-prose slide-animate-d2">
+          <p className="font-serif mt-5 max-w-prose text-lg leading-[1.68] text-foreground/82 slide-animate-d2 md:text-xl">
             {slide.text}
           </p>
         )}
 
         {slide.attribution && (
-          <p className="mt-4 text-xs italic slide-animate-d2" style={{ color: "oklch(0.58 0.07 158)" }}>
+          <p
+            className="font-serif mt-4 text-[13px] italic slide-animate-d2"
+            style={{ color: "var(--clay)" }}
+          >
             — {slide.attribution}
           </p>
         )}
       </div>
 
-      {/* ── Shaped drawing ─────────────────────────────────── */}
+      {/* ── Taped drawing crossing the right edge ── */}
       {hasImage && (
         <div
           className="absolute z-0"
-          style={{
-            bottom: "-6%",
-            left: "50%",
-            transform: "translateX(-50%)",
-          }}
+          style={{ right: -34, bottom: 64 }}
         >
-          {/* Outer decorative ring — subtle emerald halo */}
           <div
+            className="relative slide-animate-shape"
             style={{
-              width: shape.width + 16,
-              height: shape.height + 16,
-              borderRadius: shape.borderRadius,
-              transform: `rotate(${shape.rotate}deg)`,
-              background: "oklch(0.72 0.08 158 / 0.12)",
-              position: "absolute",
-              top: -8,
-              left: -8,
-            }}
-          />
-
-          {/* Image in organic shape */}
-          <div
-            className="relative overflow-hidden slide-animate-shape"
-            style={{
-              width: shape.width,
-              height: shape.height,
-              borderRadius: shape.borderRadius,
-              transform: `rotate(${shape.rotate}deg)`,
-              boxShadow: "0 16px 60px oklch(0.28 0.06 155 / 0.18), 0 4px 16px oklch(0.28 0.06 155 / 0.10)",
-              border: "2px solid oklch(0.72 0.06 158 / 0.22)",
+              backgroundColor: "#fff",
+              padding: "9px 9px 26px",
+              boxShadow: "0 18px 44px oklch(0.25 0.02 60 / 0.28)",
+              ["--paper-rotate" as string]: `${rotate}deg`,
+              transform: `rotate(${rotate}deg)`,
             }}
           >
-            <Image
-              src={mediaPath(slide.imageSrc!)}
-              alt={slide.imageAlt ?? ""}
-              fill
-              sizes="(min-width: 768px) 320px, 260px"
-              className="object-cover object-center"
+            <div className="relative" style={{ width: 196, height: 196 }}>
+              <Image
+                src={mediaPath(slide.imageSrc!)}
+                alt={slide.imageAlt ?? ""}
+                fill
+                sizes="(min-width: 768px) 260px, 196px"
+                className="object-cover object-center"
+              />
+            </div>
+            {/* Washi tape at top */}
+            <div
+              className="washi-tape"
+              style={{ top: -10, left: "50%", transform: "translateX(-50%) rotate(3deg)" }}
             />
           </div>
         </div>

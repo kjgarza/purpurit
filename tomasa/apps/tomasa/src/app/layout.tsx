@@ -1,21 +1,29 @@
 import type { Metadata } from "next"
-import { Inter, Lora, Playfair_Display } from "next/font/google"
+import { Fraunces, Archivo, Source_Serif_4, Caveat } from "next/font/google"
 import "./globals.css"
 
-const inter = Inter({
+const archivo = Archivo({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-archivo",
 })
 
-const lora = Lora({
+const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
-  variable: "--font-lora",
+  style: ["normal", "italic"],
+  variable: "--font-source-serif",
 })
 
-const playfair = Playfair_Display({
+const fraunces = Fraunces({
   subsets: ["latin"],
-  weight: ["700", "900"],
-  variable: "--font-playfair",
+  weight: ["600", "900"],
+  style: ["normal", "italic"],
+  variable: "--font-fraunces",
+})
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  weight: ["500"],
+  variable: "--font-caveat",
 })
 
 const repoName = process.env.NEXT_PUBLIC_REPO_NAME
@@ -61,7 +69,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" suppressHydrationWarning>
-      <body className={`${inter.variable} ${lora.variable} ${playfair.variable} font-sans`}>
+      <body className={`${archivo.variable} ${sourceSerif.variable} ${fraunces.variable} ${caveat.variable} font-sans`}>
         {children}
       </body>
     </html>
