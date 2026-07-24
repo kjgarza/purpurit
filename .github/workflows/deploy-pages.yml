@@ -3,6 +3,9 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+    paths:
+      - "tomasa/**"
+      - ".github/workflows/deploy-pages.yml"
   workflow_dispatch:
 
 permissions:
@@ -13,6 +16,10 @@ permissions:
 concurrency:
   group: "pages"
   cancel-in-progress: false
+
+defaults:
+  run:
+    working-directory: tomasa
 
 jobs:
   build-and-deploy:
@@ -38,7 +45,7 @@ jobs:
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: ./apps/tomasa/out
+          path: ./tomasa/apps/tomasa/out
 
       - name: Deploy to GitHub Pages
         id: deployment
