@@ -1,3 +1,7 @@
+# CLAUDE.md
+
+Shared instructions for coding agents. `AGENTS.md` is a symlink to this file, so Codex, Cursor and others read the same content.
+
 # Tomasa
 
 Next.js 15 monorepo project using Bun workspaces.
@@ -100,3 +104,9 @@ Then export from `packages/ui/src/index.ts`.
 - All image paths must use basePath helper pattern
 - Static `public/opengraph.png` (1200x630) for OG images
 - Enable in repo Settings > Pages > Source > "GitHub Actions"
+
+<!--
+Canonical instruction file. Edit this one; AGENTS.md is a symlink to it.
+Machine-local or personal notes go in CLAUDE.local.md (gitignored).
+Convention: notes/scratchpad/10-Projects/specs/agent-instructions-convention.md
+-->

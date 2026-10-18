@@ -20,3 +20,15 @@ node_modules/
 data/images/*
 data/drawings/*
 data/
+CLAUDE.local.md
+
+# local
+.worktrees/
+.claude/worktrees/
+.claude/settings.local.json
+.claude/agents/
+.claude/skills/
+.DS_Store
+
+# private interview material, never commit
+transcript*_labeled*
