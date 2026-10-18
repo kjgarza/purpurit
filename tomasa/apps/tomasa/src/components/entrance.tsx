@@ -95,7 +95,7 @@ export function Entrance({ onEnter, onInteract }: EntranceProps) {
             >
               <div className="relative aspect-[4/5] w-full">
                 <Image
-                  src={mediaPath("entrance.jpg")}
+                  src={mediaPath("2010s/photo1.webp")}
                   alt="Tomasa"
                   fill
                   className="object-cover object-top"
